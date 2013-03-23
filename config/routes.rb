@@ -1,4 +1,11 @@
 ColgateCalendar::Application.routes.draw do
+  resources :eventlists
+  match '/ColgateCalendar/show_event_list' => 'eventlists#show_event_list'
+#, :as => 'same_director'
+
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
