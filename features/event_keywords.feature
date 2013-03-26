@@ -1,4 +1,4 @@
-Feature: View Events in a Given Timerange
+Feature: View Events with Chosen Keywords
 
     As a student
     So that I only see events that I am interested in
