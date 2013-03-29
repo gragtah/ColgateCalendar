@@ -23,6 +23,7 @@ end
 gem 'jquery-rails'
 gem 'eat'
 gem 'json'
+gem 'haml'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

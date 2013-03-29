@@ -84,8 +84,8 @@ class EventlistsController < ApplicationController
   end
   
   def show_event_list
-    x = eat("http://calendar.colgate.edu/webcache/v1.0/jsonDays/7/list-json/no--filter/no--object.json")
-    @eventlistresult = JSON.parse(x)
+    eventListJsonString = eat("http://calendar.colgate.edu/webcache/v1.0/jsonDays/7/list-json/no--filter/no--object.json")
+    @eventlistJson = (JSON.parse(eventListJsonString))["bwEventList"]["events"]
   end
 end
 
