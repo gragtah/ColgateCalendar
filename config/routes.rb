@@ -1,9 +1,9 @@
 ColgateCalendar::Application.routes.draw do
   resources :eventlists
-  match '/ColgateCalendar/show_event_list' => 'eventlists#show_event_list'
-#, :as => 'same_director'
-
-
+#root :to => redirect('/ColgateCalendar')
+  match '/show_event_list' => 'eventlists#show_event_list'
+  resources :events
+  match '/fetch_and_save_events' => 'events#fetch_and_save_events'
 
 
   # The priority is based upon order of creation:
