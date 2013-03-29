@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
         newEvent["contact_name"]= event["contact"]["name"]
         newEvent["contact_phone"]= event["contact"]["phone"]
         newEvent["contact_link"]= event["contact"]["link"]
-        Event.create!(newEvent)
+        Event.create(newEvent)
     end
   end
 end
