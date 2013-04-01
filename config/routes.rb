@@ -3,6 +3,7 @@ ColgateCalendar::Application.routes.draw do
   match '/' => 'home#home'
   
   match '/user/login' => 'users#login'
+  match '/user/logout' => 'users#logout'
   match '/user/verify' => 'users#verify_credentials'
   
   resources :eventlists

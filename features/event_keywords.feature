@@ -5,6 +5,9 @@ Feature: View Events with Chosen Keywords
     I want to be able to keep a list of keywords
 
 Background: on the main page with keywords already chosen in settings
+    Given the following users exist:
+       | username  | password | tags        |  email          |
+       | user      | password | art, sports | fake@colgate.edu|  
     Given I am logged in as "user" with password "password"
     And I am on the home page
     And the following events exist:
@@ -12,10 +15,11 @@ Background: on the main page with keywords already chosen in settings
        | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE     | TOMORROWS_DATE |   Sports    | test1 |
        | Modern Art exhibition     | Dana Arts Center  | TOMORROWS_DATE  | TOMORROWS_DATE |   Arts      | test2 |
        | Lecture on Number theory  | Ho Science Center | TODAYS_DATE     | TOMORROWS_DATE |   Academic  | test3 |
-    And I have the following chosen keywords: 'Arts', 'Sports'
+    And username "user" has set the following tags: Arts, Sports
 
 Scenario: view events with chosen keywords
-    When I follow "Today"
-    Then I should be on the events page for Today
-    And I should see the following events: "Soccer Game vs Bucknell", "Modern Art exhibition"
-    But I should not see the following events: "Lecture on Number theory"
+    When I follow "This Week"
+    Then I should be on the events page for week
+    And I should see "Soccer game vs Bucknell"
+    And I should see "Modern Art exhibition"
+    But I should not see "Lecture on Number theory"
