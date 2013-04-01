@@ -13,11 +13,11 @@ Scenario: login with correct credentials
     When I fill in "Username" with "user"
     And I fill in "Password" with "password"
     And I press "Login"
-    Then I should be on home page for "user"
+    Then I should be on the home page
 
 Scenario: login with incorrect credentials
     When I fill in "Username" with "user"
     And I fill in "Password" with "notmypassword"
     And I press "Login"
     Then I should be on the login page
-    And I should see "Invalid credentials!"
+    And I should see "Invalid Credentials!"
