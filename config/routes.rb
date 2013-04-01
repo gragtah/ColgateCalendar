@@ -1,8 +1,6 @@
 ColgateCalendar::Application.routes.draw do
 
-
   match '/home' => 'home#home'
-
 
   resources :eventlists
 #root :to => redirect('/ColgateCalendar')

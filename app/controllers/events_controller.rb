@@ -90,11 +90,13 @@ class EventsController < ApplicationController
 
   def events_today
     @events = Event.events_today
+    @when = "Today"
     render :events_list
   end
 
   def events_tomorrow
     @events = Event.events_tomorrow
+    @when = "Tomorrow"
     render :events_list
   end
   
