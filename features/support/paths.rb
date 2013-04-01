@@ -15,7 +15,7 @@ module NavigationHelpers
 
      when /^the (ColgateCalendar )?home page$/ then '/'
      when /^the events page for (.*)$/ then "/events/#{$1}"
-     when /^the login page$/ then '/login'
+     when /^the login page$/ then '/user/login'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

@@ -7,10 +7,9 @@ Feature: View Events with Chosen Keywords
 Background: on the main page with keywords already chosen in settings
     Given I am on the home page
     And the following events exist:
-       | title                     | location          | start        |    tags      | guid  |
-       | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE  |    Sports    | test1 |
-       | Modern Art exhibition     | Dana Arts Center  | TODAYS_DATE  |    Arts      | test2 |
-       | Lecture on Number theory  | Ho Science Center | TODAYS_DATE  |    Academic  | test3 |
+       | title                     | location          | start           | end            |   tags      | guid  |
+       | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE     | TOMORROWS_DATE |   Sports    | test1 |
+       | Modern Art exhibition     | Dana Arts Center  | TOMORROWS_DATE  | TOMORROWS_DATE |   Arts      | test2 |
     And I have the following chosen keywords: 'Arts', 'Sports'
 
 Scenario: view events with chosen keywords
