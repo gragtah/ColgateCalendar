@@ -18,10 +18,19 @@ Scenario: login with correct credentials
     And I press "Login"
     Then I should be on the home page
     And I should see "Logged in as user"
-
-Scenario: login with incorrect credentials
+    
+Scenario: login with incorrect username
+    When I fill in "Username" with "notmyusername"
+    And I fill in "Password" with "password"
+    And I press "Login"
+    Then I should be on the login page
+    And I should see "Username Invalid!"   
+    
+Scenario: login with incorrect password
     When I fill in "Username" with "user"
     And I fill in "Password" with "notmypassword"
     And I press "Login"
     Then I should be on the login page
     And I should see "Invalid Credentials!"
+    
+
