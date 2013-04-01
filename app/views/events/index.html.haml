@@ -1,0 +1,23 @@
+%h1 Listing all events
+- if @events.count > 0 then
+    = "#{@events.count} events stored in database."
+%table
+    %thead
+        %tr
+            %th Title
+            %th Location
+            %th Start
+            %th End
+            %th
+            %th
+            %th
+    %tbody
+        - @events.each do |event|
+            %tr
+                %td= event["title"]
+                %td= event["location"]
+                %td= event["start"]
+                %td= event["end"]
+                %td= link_to 'Show', event
+                %td= link_to 'Edit', edit_event_path(event)
+                %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }

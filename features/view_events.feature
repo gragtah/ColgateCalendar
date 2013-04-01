@@ -29,3 +29,9 @@ Scenario: view this week's events
     And I should see "Soccer game vs Bucknell" 
     And I should see "Modern Art exhibition" 
 
+Scenario: fetching events from web feed and viewing entire list
+    When I go to the page that activates event-fetching 
+    Then I should see "events fetched." 
+    And I follow "View Listing of All Events"
+    And I should see "events stored in database."
+

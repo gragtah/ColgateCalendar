@@ -15,6 +15,8 @@ module NavigationHelpers
 
      when /^the (ColgateCalendar )?home page$/ then '/'
      when /^the events page for (.*)$/ then "/events/#{$1}"
+     when /^the page that activates event-fetching$/ then '/fetch_and_save_events'
+     when /^the events listing page$/ then "/events"
      when /^the login page$/ then '/user/login'
 
     # Add more mappings here.

@@ -1,0 +1,6 @@
+%h1 Fetch And Save Events
+- if @fetched_events_count > 0 then
+    = "#{@fetched_events_count} events fetched."
+- else
+    = "Failure or Nothing Fetched."
+= link_to "View Listing of All Events", events_path

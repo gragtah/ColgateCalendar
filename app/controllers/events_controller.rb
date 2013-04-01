@@ -1,38 +1,23 @@
 require 'json'
 require 'eat'
 class EventsController < ApplicationController
-=begin
   # GET /events
   # GET /events.json
   def index
     @events = Event.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @events }
-    end
   end
 
+=begin
   # GET /events/1
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @event }
-    end
   end
 
   # GET /events/new
   # GET /events/new.json
   def new
     @event = Event.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @event }
-    end
   end
 
   # GET /events/1/edit
@@ -86,8 +71,8 @@ class EventsController < ApplicationController
 =end
 
   def fetch_and_save_events
-    Event.fetch_and_save_events
-    redirect_to events_url
+    @fetched_events_count = Event.fetch_and_save_events
+    render :fetch_and_save_events
   end
 
   def events_today

@@ -17,6 +17,7 @@ Scenario: login with correct credentials
     And I fill in "Password" with "password"
     And I press "Login"
     Then I should be on the home page
+    And I should see "Welcome, user!"
     And I should see "Logged in as user"
     
 Scenario: login with incorrect username

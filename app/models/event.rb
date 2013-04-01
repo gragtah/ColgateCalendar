@@ -22,6 +22,7 @@ class Event < ActiveRecord::Base
         newEvent["contact_link"]= event["contact"]["link"]
         Event.create(newEvent)
     end
+    eventListJsonArray.count
   end
   
   def self.get_events_after_filtering_by_tags session
