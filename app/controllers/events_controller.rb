@@ -87,5 +87,15 @@ class EventsController < ApplicationController
     Event.fetch_and_save_events
     redirect_to events_url
   end
+
+  def events_today
+    @events = Event.events_today
+    render :events_list
+  end
+
+  def events_tomorrow
+    @events = Event.events_tomorrow
+    render :events_list
+  end
   
 end

@@ -10,9 +10,10 @@ class Event < ActiveRecord::Base
         newEvent = {}
         newEvent["title"]= event["summary"]
         newEvent["guid"]= event["guid"]
-        newEvent["location"]= event["location"]["address"]
-        newEvent["start"]= DateTime.parse(event["start"]["utcdate"]).in_time_zone("Eastern Time (US & Canada)")
-        newEvent["end"]= DateTime.parse(event["end"]["utcdate"]).in_time_zone("Eastern Time (US & Canada)")
+        newEvent["location"]= (event["location"]["address"]).gsub(/^z\*/,'')
+#TODO: timezone issue, for events/tomorrow conversion UTC TO EDT
+        newEvent["start"]= DateTime.parse(event["start"]["utcdate"]).in_time_zone("Eastern Time (US & Canada)").to_s
+        newEvent["end"]= DateTime.parse(event["end"]["utcdate"]).in_time_zone("Eastern Time (US & Canada)").to_s
         newEvent["event_link"]= event["eventlink"]
         newEvent["description"]= event["description"]
         newEvent["tags"]= event["categories"].join(',')
@@ -22,4 +23,18 @@ class Event < ActiveRecord::Base
         Event.create(newEvent)
     end
   end
+  
+  def self.events_today
+    @events = Event.find(:all, :conditions => ["start < ? AND end > ?", DateTime.tomorrow.at_beginning_of_day, DateTime.now]) 
+  end
+
+  def self.events_tomorrow
+    @events = Event.find(:all, :conditions => ["start < ? AND end > ?", DateTime.tomorrow.tomorrow.at_beginning_of_day, DateTime.tomorrow.at_beginning_of_day]) 
+  end
+
+#fix this 
+  def self.events_this_week
+    @events = Event.where(:end => DateTime.now..DateTime.tomorrow)
+  end
+
 end
