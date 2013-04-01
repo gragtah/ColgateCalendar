@@ -1,0 +1,19 @@
+%h1 Today's Events
+
+%table#movies
+    %thead
+        %tr
+            %th Title 
+            %th Location
+            %th Start
+            %th End
+    %tbody
+        - @events.each do |event|
+            %tr
+                %td= event.title 
+                %td= event.location
+                %td= event.start
+                %td= event.end
+-# %td= link_to "More about #{movie.title}", movie_path(movie)
+
+-# = link_to 'Add new movie', new_movie_path
