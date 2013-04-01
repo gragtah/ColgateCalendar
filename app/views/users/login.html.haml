@@ -1,6 +1,6 @@
 %h1 Login
 
-%form{:name => 'login', :action => '/user/authenticate', :method => 'POST', :enctype => 'text/plain'}
+%form{:name => 'login', :action => '/user/verify', :method => 'POST', :enctype => 'text/plain'}
 	%ul
 		%li
 			%label{:for => 'username'} Username:
@@ -8,4 +8,4 @@
 		%li
 			%label{:for => 'password'} Password:
 			%input{:id => 'password', :type => 'password', :name => 'password'}
-	%input{:type => 'submit', :value => 'Login'}
+	%input{:id => 'Login', :type => 'submit', :value => 'Login'}

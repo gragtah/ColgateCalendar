@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     
     def login
-            render 'login'
+        render 'login'
     end
     
     def verify_credentials
