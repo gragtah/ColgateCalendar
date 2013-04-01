@@ -14,7 +14,8 @@
 /log/*.log
 /tmp
 
-# Ignore all tmp .swp files
-*.swp
+# Ignore simplecov output
+/coverage
 
-*.*~
+#Ignore all tmp .swp files
+*.swp
