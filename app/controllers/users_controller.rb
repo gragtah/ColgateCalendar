@@ -1,4 +1,4 @@
-Class UsersController < ApplicationController
+class UsersController < ApplicationController
 
     def authenticate
         if user.authenticated?
@@ -9,3 +9,4 @@ Class UsersController < ApplicationController
             return
         end
     end
+end

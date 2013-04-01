@@ -5,16 +5,16 @@ Feature: View Events with Chosen Keywords
     I want to be able to keep a list of keywords
 
 Background: on the main page with keywords already chosen in settings
-    Given I am on the main page
+    Given I am on the home page
     And the following events exist:
-       | Event name                | location          | start_date   |    keywords  |
-       | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE  |    Sports    |
-       | Modern Art exhibition     | Dana Arts Center  | TODAYS_DATE  |    Arts      |
-       | Lecture on Number theory  | Ho Science Center | TODAYS_DATE  |    Academic  |
+       | title                     | location          | start        |    tags      | guid  |
+       | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE  |    Sports    | test1 |
+       | Modern Art exhibition     | Dana Arts Center  | TODAYS_DATE  |    Arts      | test2 |
+       | Lecture on Number theory  | Ho Science Center | TODAYS_DATE  |    Academic  | test3 |
     And I have the following chosen keywords: 'Arts', 'Sports'
 
 Scenario: view events with chosen keywords
-    When I click "Today"
+    When I follow "Today"
     Then I should be on the events page for Today
     And I should see the following events: "Soccer Game vs Bucknell", "Modern Art exhibition"
     But I should not see the following events: "Lecture on Number theory"

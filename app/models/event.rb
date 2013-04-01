@@ -25,16 +25,16 @@ class Event < ActiveRecord::Base
   end
   
   def self.events_today
-    @events = Event.find(:all, :conditions => ["start < ? AND end > ?", DateTime.tomorrow.at_beginning_of_day, DateTime.now]) 
+    Event.find(:all, :conditions => ["start < ? AND end > ?", DateTime.tomorrow.at_beginning_of_day, DateTime.now]) 
   end
 
   def self.events_tomorrow
-    @events = Event.find(:all, :conditions => ["start < ? AND end > ?", DateTime.tomorrow.tomorrow.at_beginning_of_day, DateTime.tomorrow.at_beginning_of_day]) 
+    Event.find(:all, :conditions => ["start < ? AND end > ?", DateTime.tomorrow.tomorrow.at_beginning_of_day, DateTime.tomorrow.at_beginning_of_day]) 
   end
 
 #fix this 
   def self.events_this_week
-    @events = Event.find(:all, :conditions => ["start < ? AND end > ?", (DateTime.now + 7).at_beginning_of_day, DateTime.now]) 
+    Event.find(:all, :conditions => ["start < ? AND end > ?", (DateTime.now + 7).at_beginning_of_day, DateTime.now]) 
   end
 
 end
