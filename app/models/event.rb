@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
 
 #fix this 
   def self.events_this_week
-    @events = Event.where(:end => DateTime.now..DateTime.tomorrow)
+    @events = Event.find(:all, :conditions => ["start < ? AND end > ?", (DateTime.now + 7).at_beginning_of_day, DateTime.now]) 
   end
 
 end

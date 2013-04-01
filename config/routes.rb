@@ -1,13 +1,14 @@
 ColgateCalendar::Application.routes.draw do
 
-  match '/home' => 'home#home'
+  match '/' => 'home#home'
 
   resources :eventlists
-#root :to => redirect('/ColgateCalendar')
+#root :to => redirect('/home')
   match '/show_event_list' => 'eventlists#show_event_list'
   match '/events/today' => 'events#events_today', :as => 'events_today'
   match '/events/tomorrow' => 'events#events_tomorrow', :as => 'events_tomorrow'
-#TODO: Do we need the :as for the above 2?
+  match '/events/this_week' => 'events#events_this_week', :as => 'events_this_week'
+#TODO: Do we need the :as for the above 3?
   resources :events
   match '/fetch_and_save_events' => 'events#fetch_and_save_events'
 

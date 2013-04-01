@@ -4,8 +4,8 @@ Feature: View Events in a Given Timerange
     So that I can see what's coming up that I might want to attend
     I want to be able to view events in a given time range
 
-Background: on the main page
-    Given I am on the main page
+Background: on the home page
+    Given I am on the home page
 
 Scenario: view today's events
     When I click "Today"

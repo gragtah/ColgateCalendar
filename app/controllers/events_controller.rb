@@ -100,4 +100,10 @@ class EventsController < ApplicationController
     render :events_list
   end
   
+  def events_this_week
+    @events = Event.events_this_week
+    @when = "This Week"
+    render :events_list
+  end
+
 end
