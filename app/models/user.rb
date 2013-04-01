@@ -3,19 +3,13 @@ class User < ActiveRecord::Base
     
 
 #Needs updates. Needs to check session for a login boolean, for now this is a bogus method
-    def self.authenticated?(username, password)
-        user = find_by_username(username)
-        if user.nil?
-            false
-        elsif user.has_password?(password)
-            true
-        else
-            false
-        end
-    end
-
 
     def correct_password?(pwd)
-        return self.password == pwd
+        self.password == pwd
+    end
+    
+    def self.verify_credentials?(username, password)
+        user = User.find_by_username(username)
+        !user.nil? and user.correct_password?(password)
     end
 end

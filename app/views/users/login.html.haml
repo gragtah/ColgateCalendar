@@ -2,7 +2,7 @@
 
 %div= flash[:warning]
 
-= form_tag '/user/verify', :method => :post do 
+= form_tag '/user/authenticate', :method => :post do 
 	%ul
 		%li
 			= label :login, :username, 'Username: '

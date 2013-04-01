@@ -4,7 +4,7 @@ ColgateCalendar::Application.routes.draw do
   
   match '/user/login' => 'users#login'
   match '/user/logout' => 'users#logout'
-  match '/user/verify' => 'users#verify_credentials'
+  match '/user/authenticate' => 'users#authenticate'
   
   resources :eventlists
 #root :to => redirect('/home')
