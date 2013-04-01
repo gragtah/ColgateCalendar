@@ -89,19 +89,19 @@ class EventsController < ApplicationController
   end
 
   def events_today
-    @events = Event.events_today
+    @events = Event.events_today(session)
     @when = "Today"
     render :events_list
   end
 
   def events_tomorrow
-    @events = Event.events_tomorrow
+    @events = Event.events_tomorrow(session)
     @when = "Tomorrow"
     render :events_list
   end
   
   def events_this_week
-    @events = Event.events_this_week
+    @events = Event.events_this_week(session)
     @when = "This Week"
     render :events_list
   end

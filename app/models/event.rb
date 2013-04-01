@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
         newEvent["end"]= DateTime.parse(event["end"]["utcdate"]).in_time_zone("Eastern Time (US & Canada)").to_s
         newEvent["event_link"]= event["eventlink"]
         newEvent["description"]= event["description"]
-        newEvent["tags"]= event["categories"].join(',')
+        newEvent["tags"]= event["categories"].join(',').downcase
         newEvent["contact_name"]= event["contact"]["name"]
         newEvent["contact_phone"]= event["contact"]["phone"]
         newEvent["contact_link"]= event["contact"]["link"]
@@ -24,17 +24,32 @@ class Event < ActiveRecord::Base
     end
   end
   
-  def self.events_today
-    Event.find(:all, :conditions => ["start < ? AND end > ?", DateTime.tomorrow.at_beginning_of_day, DateTime.now]) 
+  def self.get_events_after_filtering_by_tags session
+    if session[:logged_in] == true 
+        @username = session[:username]
+        tags = User.find_by_username(@username).tags.downcase.split(',')
+
+        #Following code adds tag filtering to our SQL query, and the placeholders for the tags' values
+        @condition_array[0] << " AND (" << (["tags LIKE ?"] * tags.length).join(' OR ') << ")"
+        @condition_array += (tags.map { |s| '%' + s.downcase + '%' })
+    end
+    Event.find(:all, :conditions => @condition_array)
   end
 
-  def self.events_tomorrow
-    Event.find(:all, :conditions => ["start < ? AND end > ?", DateTime.tomorrow.tomorrow.at_beginning_of_day, DateTime.tomorrow.at_beginning_of_day]) 
+  def self.events_today session
+    @condition_array = ["start < ? AND end > ?", DateTime.tomorrow.at_beginning_of_day, DateTime.now]
+    get_events_after_filtering_by_tags session
+  end
+
+  def self.events_tomorrow session
+    @condition_array = ["start < ? AND end > ?", DateTime.tomorrow.tomorrow.at_beginning_of_day, DateTime.tomorrow.at_beginning_of_day]
+    get_events_after_filtering_by_tags session
   end
 
 #fix this 
-  def self.events_this_week
-    Event.find(:all, :conditions => ["start < ? AND end > ?", (DateTime.now + 7).at_beginning_of_day, DateTime.now]) 
+  def self.events_this_week session
+    @condition_array = ["start < ? AND end > ?", (DateTime.now + 7).at_beginning_of_day, DateTime.now]
+    get_events_after_filtering_by_tags session
   end
 
 end
