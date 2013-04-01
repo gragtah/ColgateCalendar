@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130401004239) do
+ActiveRecord::Schema.define(:version => 20130401145446) do
 
   create_table "eventlists", :force => true do |t|
     t.text     "info"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20130401004239) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
+    t.string   "username"
     t.string   "password"
     t.string   "tags"
     t.string   "email"

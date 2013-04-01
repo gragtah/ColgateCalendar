@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    attr_accessible :email, :tags, :name, :password
+    attr_accessible :username, :password, :email, :tags
     
 
 #Needs updates. Needs to check session for a login boolean, for now this is a bogus method
