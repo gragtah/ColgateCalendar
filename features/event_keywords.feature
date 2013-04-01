@@ -5,7 +5,7 @@ Feature: View Events with Chosen Keywords
     I want to be able to keep a list of keywords
 
 Background: on the main page with keywords already chosen in settings
-    Given I am logged in as "user"
+    Given I am logged in as "user" with password "password"
     And I am on the home page
     And the following events exist:
        | title                     | location          | start           | end            |   tags      | guid  |

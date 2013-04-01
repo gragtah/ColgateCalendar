@@ -5,3 +5,10 @@ Given /the following users exist/ do |users_table|
         User.create!(user)
     end
 end
+
+Given /^I am logged in as "(.+)" with password "(.+)"$/ do |username, password|
+    step %{I am on the login page}
+    step %{I fill in "Username" with "#{username}"}
+    step %{I fill in "Password" with "#{password}"}
+    step %{I press "Login"}
+end
