@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    attr_accessible :email, :tags, :name, :password
+    attr_accessible :username, :password, :email, :tags
     
     def self.authenticated?(username, password)
         user = find_by_username(username)
