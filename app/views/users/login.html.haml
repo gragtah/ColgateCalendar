@@ -1,0 +1,11 @@
+%h1 Login
+
+%form {:name => 'login', :action => '/user/authenticate', :method => 'POST', :enctype => 'text/plain'}
+	%ul
+		%li
+			%label {:for => 'username'} Username:
+			%input {:id => 'username', :type => 'text', :name => 'username'}
+		%li
+			%label {:for => 'password'} Password:
+			%input {:id => 'password', :type => 'password', :name => 'password'}
+	%input{:type => 'submit', :value => 'Login'}

@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
+	def login
+		render 'login'
+	end
+	
 	def authenticate
-		if user.authenticated?
+		if user.authenticated?(params[:username], params[:password])
 			redirect_to "/"
 		else
 			flash[:warning] = "Invalid Credentials!"

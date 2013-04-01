@@ -5,7 +5,7 @@ Feature: View Events with Chosen Keywords
     I want to be able to keep a list of keywords
 
 Background: on the main page with keywords already chosen in settings
-    Given I am on the main page
+    Given I am on the home page
     And the following events exist:
        | Event name                | location          | start_date   |    keywords  |
        | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE  |    Sports    |

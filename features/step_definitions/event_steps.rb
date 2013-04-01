@@ -11,7 +11,3 @@ Given /the following events exist/ do |events_table|
         Event.create!(event)
     end
 end
-
-Given /I am on the (.*)$/ do |page|
-	visit page
-end
