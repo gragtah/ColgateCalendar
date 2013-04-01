@@ -4,8 +4,9 @@ class UsersController < ApplicationController
             render 'login'
     end
     
-    def authenticate
-            if user.authenticated?(params[:username], params[:password])
+    def verify_credentials
+            if user.correct_password?(params[:password])
+                    #To Do: Update session to indicate user is logged in
                     redirect_to "/"
             else
                     flash[:warning] = "Invalid Credentials!"
