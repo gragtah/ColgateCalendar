@@ -5,13 +5,18 @@ class UsersController < ApplicationController
     end
     
     def verify_credentials
-            if user.correct_password?(params[:password])
-                    #To Do: Update session to indicate user is logged in
+            username = params[:login][:username]
+            user = User.find_by_username(username)
+            if user.nil?
+                    flash[:warning] = "Username Invalid!"
+                    redirect_to "/user/login"
+            elsif user.correct_password?(params[:login][:password])
+                    session[:logged_in] = true
+                    session[:username] = username
                     redirect_to "/"
             else
                     flash[:warning] = "Invalid Credentials!"
-                    redirect_to "/login"
-                    return
+                    redirect_to "/user/login"
             end
     end
 end

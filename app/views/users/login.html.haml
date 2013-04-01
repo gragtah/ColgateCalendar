@@ -1,11 +1,13 @@
 %h1 Login
 
-%form{:name => 'login', :action => '/user/verify', :method => 'POST', :enctype => 'text/plain'}
+%div= flash[:warning]
+
+= form_tag '/user/verify', :method => :post do 
 	%ul
 		%li
-			%label{:for => 'username'} Username:
-			%input{:id => 'username', :type => 'text', :name => 'username'}
+			= label :login, :username, 'Username: '
+			= text_field :login, 'username'
 		%li
-			%label{:for => 'password'} Password:
-			%input{:id => 'password', :type => 'password', :name => 'password'}
-	%input{:id => 'Login', :type => 'submit', :value => 'Login'}
+			= label :login, :password, 'Password: '
+			= password_field :login, 'password'
+	= submit_tag 'Login'

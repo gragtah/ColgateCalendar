@@ -3,4 +3,8 @@
 %div= link_to 'Today', 'events/today'
 %div= link_to 'Tomorrow', 'events/tomorrow'
 %div= link_to 'This Week', 'events/week'
-%div= link_to 'Login', 'user/login'
+- if session[:logged_in] then
+    %div= "Logged in as #{session[:username]}"
+    %div= link_to 'Logout', 'user/logout'
+- else
+    %div= link_to 'Login', 'user/login'
