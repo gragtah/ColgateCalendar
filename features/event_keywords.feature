@@ -7,15 +7,15 @@ Feature: View Events with Chosen Keywords
 Background: on the main page with keywords already chosen in settings
     Given the following users exist:
        | username  | password | tags        |  email          |
-       | user      | password | art, sports | fake@colgate.edu|  
-    Given I am logged in as "user" with password "password"
-    And I am on the home page
+       | user      | password | art,sports | fake@colgate.edu|  
     And the following events exist:
        | title                     | location          | start           | end            |   tags      | guid  |
-       | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE     | TOMORROWS_DATE |   Sports    | test1 |
-       | Modern Art exhibition     | Dana Arts Center  | TOMORROWS_DATE  | TOMORROWS_DATE |   Arts      | test2 |
-       | Lecture on Number theory  | Ho Science Center | TODAYS_DATE     | TOMORROWS_DATE |   Academic  | test3 |
+       | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE     | TOMORROWS_DATE |   sports    | test1 |
+       | Modern Art exhibition     | Dana Arts Center  | TOMORROWS_DATE  | TOMORROWS_DATE |   arts      | test2 |
+       | Lecture on Number theory  | Ho Science Center | TODAYS_DATE     | TOMORROWS_DATE |   academic  | test3 |
+    And I am logged in as "user" with password "password"
     And username "user" has set the following tags: Arts, Sports
+    And I am on the home page
 
 Scenario: view events with chosen keywords
     When I follow "This Week"

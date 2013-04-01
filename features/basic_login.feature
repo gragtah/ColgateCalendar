@@ -24,13 +24,18 @@ Scenario: login with incorrect username
     And I fill in "Password" with "password"
     And I press "Login"
     Then I should be on the login page
-    And I should see "Username Invalid!"   
+    And I should see "Invalid username/password!"   
     
 Scenario: login with incorrect password
     When I fill in "Username" with "user"
     And I fill in "Password" with "notmypassword"
     And I press "Login"
     Then I should be on the login page
-    And I should see "Invalid Credentials!"
+    And I should see "Invalid username/password!"
     
-
+Scenario: logout a logged-in user
+    When I am logged in as "user" with password "password"
+    And I am on the home page
+    And I follow "Logout"
+    Then I should be on the home page
+    And I should see "You have logged out successfully!"

@@ -15,9 +15,8 @@ Given /^I am logged in as "(.+)" with password "(.+)"$/ do |username, password|
     step %{I should see "Logged in as user"}
 end
 
-
 Given /^username "(.+)" has set the following tags: (.*)$/ do |username, tag_list|
     user = User.find_by_username(username)
-    user.tags = tag_list.gsub(',', '').split(' ')
+    user.tags = tag_list.gsub(' ', '') 
     user.save!
 end

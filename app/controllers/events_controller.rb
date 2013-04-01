@@ -1,6 +1,7 @@
 require 'json'
 require 'eat'
 class EventsController < ApplicationController
+=begin
   # GET /events
   # GET /events.json
   def index
@@ -82,6 +83,7 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+=end
 
   def fetch_and_save_events
     Event.fetch_and_save_events
