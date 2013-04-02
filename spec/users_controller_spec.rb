@@ -6,7 +6,7 @@ describe UsersController, :type => :controller do
 			     
       			fake_user = mock(User, :username => "user", :password => "password") 
       			User.stub!(:find_by_username).with("user").and_return(fake_user)
-      			fake_user.stub!(:correct_password?).with("password").and_return(true)
+                        fake_user.stub!(:correct_password?).with("password").and_return(true)
 
 			User.verify_credentials?("user", "password").should == true
 			post :authenticate, :login => {:username =>"user", :password => "password"} 
@@ -30,4 +30,13 @@ describe UsersController, :type => :controller do
 
 		end
 	end
+        
+        describe "correct_password? should return true/false depending on input" do
+            it "should call the correct_password? function" do
+                dummy = User.new
+                dummy.username = "user"
+                dummy.password = "password"
+                dummy.correct_password?("password").should == true
+            end
+        end
 end
