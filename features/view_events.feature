@@ -7,7 +7,7 @@ Feature: View Events in a Given Timerange
 Background: on the home page
     Given I am on the home page
     And the following events exist:
-       | title                     | location          | start           | end            |   tags      | guid  |
+       | title                     | location          | start           | finish            |   tags      | guid  |
        | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE     | TOMORROWS_DATE |   Sports    | test1 |
        | Modern Art exhibition     | Dana Arts Center  | TOMORROWS_DATE  | TOMORROWS_DATE |   Arts      | test2 |
 

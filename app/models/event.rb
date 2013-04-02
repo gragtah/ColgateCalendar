@@ -1,7 +1,7 @@
 require 'date'
 class Event < ActiveRecord::Base
   validates :guid, :uniqueness => {:scope => :start}
-  attr_accessible :contact_link, :contact_name, :contact_phone, :description, :end, :event_link, :guid, :location, :start, :tags, :title
+  attr_accessible :contact_link, :contact_name, :contact_phone, :description, :finish, :event_link, :guid, :location, :start, :tags, :title
 
   def self.fetch_and_save_events
     eventListJsonString = eat("http://calendar.colgate.edu/webcache/v1.0/jsonDays/7/list-json/no--filter/no--object.json")
@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
         newEvent["location"]= (event["location"]["address"]).gsub(/^z\*/,'')
 #TODO: timezone issue, for events/tomorrow conversion UTC TO EDT
         newEvent["start"]= DateTime.parse(event["start"]["utcdate"]).in_time_zone("Eastern Time (US & Canada)").to_s
-        newEvent["end"]= DateTime.parse(event["end"]["utcdate"]).in_time_zone("Eastern Time (US & Canada)").to_s
+        newEvent["finish"]= DateTime.parse(event["end"]["utcdate"]).in_time_zone("Eastern Time (US & Canada)").to_s
         newEvent["event_link"]= event["eventlink"]
         newEvent["description"]= event["description"]
         newEvent["tags"]= event["categories"].join(',').downcase
@@ -38,18 +38,18 @@ class Event < ActiveRecord::Base
   end
 
   def self.events_today session
-    @condition_array = ["start < ? AND end > ?", DateTime.tomorrow.at_beginning_of_day, DateTime.now]
+    @condition_array = ["start < ? AND finish > ?", DateTime.tomorrow.at_beginning_of_day, DateTime.now]
     get_events_after_filtering_by_tags session
   end
 
   def self.events_tomorrow session
-    @condition_array = ["start < ? AND end > ?", DateTime.tomorrow.tomorrow.at_beginning_of_day, DateTime.tomorrow.at_beginning_of_day]
+    @condition_array = ["start < ? AND finish > ?", DateTime.tomorrow.tomorrow.at_beginning_of_day, DateTime.tomorrow.at_beginning_of_day]
     get_events_after_filtering_by_tags session
   end
 
 #fix this 
   def self.events_this_week session
-    @condition_array = ["start < ? AND end > ?", (DateTime.now + 7).at_beginning_of_day, DateTime.now]
+    @condition_array = ["start < ? AND finish > ?", (DateTime.now + 7).at_beginning_of_day, DateTime.now]
     get_events_after_filtering_by_tags session
   end
 

@@ -9,7 +9,7 @@ Background: on the main page with keywords already chosen in settings
        | username  | password | tags        |  email          |
        | user      | password | art,sports | fake@colgate.edu|  
     And the following events exist:
-       | title                     | location          | start           | end            |   tags      | guid  |
+       | title                     | location          | start           | finish            |   tags      | guid  |
        | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE     | TOMORROWS_DATE |   sports    | test1 |
        | Modern Art exhibition     | Dana Arts Center  | TOMORROWS_DATE  | TOMORROWS_DATE |   arts      | test2 |
        | Lecture on Number theory  | Ho Science Center | TODAYS_DATE     | TOMORROWS_DATE |   academic  | test3 |

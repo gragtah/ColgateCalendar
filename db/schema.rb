@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130401145446) do
+ActiveRecord::Schema.define(:version => 20130402003029) do
 
   create_table "eventlists", :force => true do |t|
     t.text     "info"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20130401145446) do
     t.string   "guid"
     t.string   "location"
     t.datetime "start"
-    t.datetime "end"
+    t.datetime "finish"
     t.string   "event_link"
     t.text     "description"
     t.string   "tags"

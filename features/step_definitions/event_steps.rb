@@ -9,7 +9,7 @@ Given /the following events exist/ do |events_table|
         end
         date
     end
-    events_table.map_column!('end') do |date| 
+    events_table.map_column!('finish') do |date| 
         if date == 'TODAYS_DATE'
             date = DateTime.now 
         elsif date == 'TOMORROWS_DATE'
