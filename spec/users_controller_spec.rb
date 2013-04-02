@@ -54,6 +54,13 @@ describe UsersController, :type => :controller do
 			flash[:info].should == "You have logged out successfully!"
 		end
 	end
+	
+	describe "login testing" do
+		it "should render login" do
+			get :login
+			response.should render_template(:login)
+		end
+	end
 
 
 end
