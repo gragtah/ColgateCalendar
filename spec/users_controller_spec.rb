@@ -39,4 +39,21 @@ describe UsersController, :type => :controller do
                 dummy.correct_password?("password").should == true
             end
         end
+        
+        describe "logout testing" do
+        	it "should log the user out" do
+			fake_user = mock(User, :username => "user", :password => "password") 
+      			User.stub!(:find_by_username).with("user").and_return(fake_user)
+                        fake_user.stub!(:correct_password?).with("password").and_return(true)
+
+			User.verify_credentials?("user", "password").should == true
+			post :logout, :login => {:username =>"user", :password => "password"} 
+			response.should redirect_to("/")
+			session[:username].should == nil
+			session[:logged_in].should == nil
+			flash[:info].should == "You have logged out successfully!"
+		end
+	end
+
+
 end
