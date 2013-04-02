@@ -14,7 +14,7 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2013-04-01T19:20:07-04:00">2013-04-01T19:20:07-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2013-04-01T20:50:41-04:00">2013-04-01T20:50:41-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -1359,7 +1359,7 @@
         <li class="covered" data-hits="1" data-linenumber="4">
           <span class="hits">1</span>
           
-          <code class="ruby">  attr_accessible :contact_link, :contact_name, :contact_phone, :description, :end, :event_link, :guid, :location, :start, :tags, :title</code>
+          <code class="ruby">  attr_accessible :contact_link, :contact_name, :contact_phone, :description, :finish, :event_link, :guid, :location, :start, :tags, :title</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="5">
@@ -1431,7 +1431,7 @@
         <li class="covered" data-hits="103" data-linenumber="16">
           <span class="hits">103</span>
           
-          <code class="ruby">        newEvent[&quot;end&quot;]= DateTime.parse(event[&quot;end&quot;][&quot;utcdate&quot;]).in_time_zone(&quot;Eastern Time (US &amp; Canada)&quot;).to_s</code>
+          <code class="ruby">        newEvent[&quot;finish&quot;]= DateTime.parse(event[&quot;end&quot;][&quot;utcdate&quot;]).in_time_zone(&quot;Eastern Time (US &amp; Canada)&quot;).to_s</code>
         </li>
       
         <li class="covered" data-hits="103" data-linenumber="17">
@@ -1581,7 +1581,7 @@
         <li class="covered" data-hits="1" data-linenumber="41">
           <span class="hits">1</span>
           
-          <code class="ruby">    @condition_array = [&quot;start &lt; ? AND end &gt; ?&quot;, DateTime.tomorrow.at_beginning_of_day, DateTime.now]</code>
+          <code class="ruby">    @condition_array = [&quot;start &lt; ? AND finish &gt; ?&quot;, DateTime.tomorrow.at_beginning_of_day, DateTime.now]</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="42">
@@ -1611,7 +1611,7 @@
         <li class="covered" data-hits="1" data-linenumber="46">
           <span class="hits">1</span>
           
-          <code class="ruby">    @condition_array = [&quot;start &lt; ? AND end &gt; ?&quot;, DateTime.tomorrow.tomorrow.at_beginning_of_day, DateTime.tomorrow.at_beginning_of_day]</code>
+          <code class="ruby">    @condition_array = [&quot;start &lt; ? AND finish &gt; ?&quot;, DateTime.tomorrow.tomorrow.at_beginning_of_day, DateTime.tomorrow.at_beginning_of_day]</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="47">
@@ -1647,7 +1647,7 @@
         <li class="covered" data-hits="2" data-linenumber="52">
           <span class="hits">2</span>
           
-          <code class="ruby">    @condition_array = [&quot;start &lt; ? AND end &gt; ?&quot;, (DateTime.now + 7).at_beginning_of_day, DateTime.now]</code>
+          <code class="ruby">    @condition_array = [&quot;start &lt; ? AND finish &gt; ?&quot;, (DateTime.now + 7).at_beginning_of_day, DateTime.now]</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="53">
