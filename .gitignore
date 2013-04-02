@@ -16,3 +16,4 @@
 
 #Ignore all tmp .swp files
 *.swp
+*.*~
