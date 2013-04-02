@@ -19,8 +19,9 @@ class UsersController < ApplicationController
 
     def logout
        flash[:info] = "You have logged out successfully!"
-       session.delete(:logged_in)
-       session.delete(:username)
+       reset_session
+       #session.delete(:logged_in)
+       #session.delete(:username)
        redirect_to "/"
     end
 
