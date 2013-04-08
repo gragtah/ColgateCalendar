@@ -71,6 +71,8 @@ describe EventsController do
 			#However, a repeat vote shouldn't be allowed
 			fake_event.should_receive(:upvote).with("user").and_return(false)
 		end
+                    #TODO:if user has upvoted, they should be able to downvote instead, and vice versa
+                    # also they should be able to click on their voted choice to unvote too. :unvote method
 		
 		it "should allow users to leave downvotes" do
 			fake_event = mock(Event, :guid => 2)
