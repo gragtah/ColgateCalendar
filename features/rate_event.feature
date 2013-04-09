@@ -22,27 +22,31 @@ Background: Events exist with downvotes and upvotes
 # We need to figure out how to associate checkboxes with given events 
 
 Scenario: upvote an event
+  Given "upvote" for "Free Food" is not checked
+  And "downvote" for "Free Food" is not checked
   When I check "upvote" for "Free Food"
   Then "upvote" for "Free Food" should be checked
   And "downvote" for "Free Food" should not be checked
 
 Scenario: downvote an event
+  Given "upvote" for "Free Food" is not checked
+  And "downvote" for "Free Food" is not checked
   When I check "downvote" for "Free Food"
   Then "downvote" for "Free Food" should be checked
   And "upvote" for "Free Food" should not be checked
-
 
 
 Scenario: un-upvote an event
     Given "upvote" for "Free Food" is checked
     When I uncheck "upvote" for "Free Food"
     Then "upvote" for "Free Food" should not be checked
+    And "downvote" for "Free Food" should not be checked
 
 Scenario: un-downvote an event
     Given "downvote" for "Free Food" is checked
     When I uncheck "downvote" for "Free Food"
     Then "downvote" for "Free Food" should not be checked
-
+    And "upvote" for "Free Food" should not be checked
 
 
 Scenario: switch from upvote to downvote
@@ -56,5 +60,4 @@ Scenario: switch from upvote to downvote
     When I check "upvote" for "Free Food"
     Then "upvote" for "Free Food" should be checked
     And "downvote" for "Free Food" should not be checked
-
 
