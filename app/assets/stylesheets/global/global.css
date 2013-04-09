@@ -58,6 +58,9 @@ h2 > a:active {
 
 section {
 	margin-bottom: 20px;
+}
+
+section#header {
 	text-align: center;
 }
 
