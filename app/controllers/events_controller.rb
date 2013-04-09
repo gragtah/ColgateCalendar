@@ -5,6 +5,8 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    @logged_in = session[:logged_in]
+    @username = session[:username]
   end
 
 =begin

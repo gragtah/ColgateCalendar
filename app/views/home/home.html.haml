@@ -1,11 +1,16 @@
-%h1 Home
+%section#header
+ %h1 Colgate Calendar
+ 
+ %div#flash-info= flash[:info]
+ 
+ %div#account
+  - if @logged_in then
+   %div= @username
+   %div= link_to 'Logout', 'user/logout'
+  - else
+   %div= link_to 'Login', 'user/login'
 
-= flash[:info]
-%div= link_to 'Today', 'events/today'
-%div= link_to 'Tomorrow', 'events/tomorrow'
-%div= link_to 'This Week', 'events/week'
-- if session[:logged_in] then
-    %div= "Logged in as #{session[:username]}"
-    %div= link_to 'Logout', 'user/logout'
-- else
-    %div= link_to 'Login', 'user/login'
+%section#content
+ %h2= link_to 'Today', 'events/today'
+ %h2= link_to 'Tomorrow', 'events/tomorrow'
+ %h2= link_to 'This Week', 'events/week'
