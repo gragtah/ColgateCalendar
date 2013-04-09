@@ -5,7 +5,7 @@ describe EventsController do
                 before(:each) do
                         session[:logged_in] = true
                         session[:username] = "user"
-    	        		fake_user = mock(User, :username => "user", :tags => "arts") 
+    	        	fake_user = mock(User, :username => "user", :tags => "arts") 
                         User.stub!(:find_by_username).with("user").and_return(fake_user)
                         Event.should_receive(:find).with(:all, hash_including(:conditions => anything))
                 end
@@ -21,6 +21,10 @@ describe EventsController do
 			get :events_this_week
 			response.should render_template :events_list
 		end
+                it "should render past events sorted in reverse chronological order" do
+                        get :events_past
+                        response.should render_template :events_list
+                end
 	end
 
 	describe "show all events" do
@@ -44,22 +48,15 @@ describe EventsController do
 		it "should display details for a given event" do
 			fake_event = mock(Event, :guid => 0, :description => "Walrus Hunting! Bring your own crossbow.")
 			#Event.stub!(:details).with(fake_event).and_return(fake_event.description)
-			fake_event.should_receive(:details)
+			#fake_event.should_receive(:details)
+                        Event.should_receive(:find).with(1).and_return(fake_event)
+                        get :show, {:id => 1}
+			response.should render_template :show
 			#To do: this should render the URL of the event profile.
-			#Check to make sure the descriptions match. 
-		end
-		
-		#Can't make this more detailed till we decide how we're storing the feedback
-		it "should display feedback for a given event" do
-			fake_event = mock(Event, :guid => 1)
-			fake_event.should_receive(:details)
-			fake_event.should_receive(:return_votes)
-			#To do: this should render the URL of the event profile.
-			#Check to make sure the upvotes and downvotes are correct.
 		end
 	end
 	
-	describe "leave feedback" do
+	describe "ratings functionality" do
 		it "should allow users to leave upvotes" do
 			fake_event = mock(Event, :guid => 2)
 			session[:logged_in] = true
@@ -85,6 +82,17 @@ describe EventsController do
 			#However, a repeat vote shouldn't be allowed
 			fake_event.should_receive(:downvote).with("user").and_return(false)
 		end
+
+                it "should allow certain pre-determined users to view event ratings" do
+                        session[:logged_in] = true
+                        session[:username] = "user"
+                        #TODO: Decide if user "user" should be the one we hand over to event admins to view ratings for all events, or add a column to certain users that allow viewing their own event's ratings. 
+                        # Since events are entered into an external system, how do we connect users to events they 'created'? And also, should they only be able to view their own ratings? Relative sense of rating is probably more helpful.
+                        Event.should_receive(:rating_for_event).with(1)
+                        get :show, {:id => 1}
+			response.should render_template :show
+
+                end
 	end
 	
 
