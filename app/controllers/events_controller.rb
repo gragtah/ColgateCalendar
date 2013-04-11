@@ -3,6 +3,8 @@ require 'eat'
 class EventsController < ApplicationController
   # GET /events
   # GET /events.json
+  @@page = 1
+  @@size = 10
   def index
     @events = Event.all
     @logged_in = session[:logged_in]
@@ -78,20 +80,21 @@ class EventsController < ApplicationController
     render :fetch_and_save_events
   end
 
-  def events_today
-    @events = Event.events_today(session)
+    #TODO: do we need to pass session around explicitly?!
+  def events_today 
+    @events = Event.events_today(session, params[:page] ||= @@page , params[:size] ||= @@size)
     @when = "Today"
     render :events_list
   end
 
   def events_tomorrow
-    @events = Event.events_tomorrow(session)
+    @events = Event.events_tomorrow(session, params[:page] ||= @@page , params[:size] ||= @@size)
     @when = "Tomorrow"
     render :events_list
   end
   
   def events_this_week
-    @events = Event.events_this_week(session)
+    @events = Event.events_this_week(session, params[:page] ||= @@page , params[:size] ||= @@size)
     @when = "This Week"
     render :events_list
   end

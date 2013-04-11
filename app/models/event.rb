@@ -1,4 +1,5 @@
 require 'date'
+require 'will_paginate'
 class Event < ActiveRecord::Base
   validates :guid, :uniqueness => {:scope => :start}
   attr_accessible :contact_link, :contact_name, :contact_phone, :description, :finish, :event_link, :guid, :location, :start, :tags, :title
@@ -25,7 +26,7 @@ class Event < ActiveRecord::Base
     eventListJsonArray.count
   end
   
-  def self.get_events_after_filtering_by_tags session
+  def self.get_events_after_filtering_by_tags(session, page, size)
     if session[:logged_in] == true 
         @username = session[:username]
         tags = User.find_by_username(@username).tags.downcase.split(',')
@@ -34,23 +35,26 @@ class Event < ActiveRecord::Base
         @condition_array[0] << " AND (" << (["tags LIKE ?"] * tags.length).join(' OR ') << ")"
         @condition_array += (tags.map { |s| '%' + s.downcase + '%' })
     end
-    Event.find(:all, :conditions => @condition_array)
+#    Event.find(:all, :conditions => @condition_array)
+    paginate :per_page => size, :page => page, :conditions => @condition_array
   end
 
-  def self.events_today session
+#TODO: make method that takes params as "events_today, events_tomorrow" etc
+#and then case statements decide the condition array to pass to get_events... method
+  def self.events_today(session, page = 1, size = 10) 
     @condition_array = ["start < ? AND finish > ?", DateTime.tomorrow.at_beginning_of_day, DateTime.now]
-    get_events_after_filtering_by_tags session
+    get_events_after_filtering_by_tags(session, page, size) 
   end
 
-  def self.events_tomorrow session
+  def self.events_tomorrow(session, page = 1, size = 10) 
     @condition_array = ["start < ? AND finish > ?", DateTime.tomorrow.tomorrow.at_beginning_of_day, DateTime.tomorrow.at_beginning_of_day]
-    get_events_after_filtering_by_tags session
+    get_events_after_filtering_by_tags(session, page, size) 
   end
 
 #fix this 
-  def self.events_this_week session
+  def self.events_this_week(session, page = 1, size = 10) 
     @condition_array = ["start < ? AND finish > ?", (DateTime.now + 7).at_beginning_of_day, DateTime.now]
-    get_events_after_filtering_by_tags session
+    get_events_after_filtering_by_tags(session, page, size) 
   end
 
 end
