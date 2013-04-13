@@ -76,7 +76,7 @@ class EventsController < ApplicationController
 
   def fetch_and_save_events
     @fetched_events_count = Event.fetch_and_save_events
-    flash[:info] = "#{fetched_events_count} events stored in the database."
+    flash[:info] = "#{@fetched_events_count} events stored in the database."
     render :fetch_and_save_events
   end
 
