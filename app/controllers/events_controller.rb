@@ -78,13 +78,12 @@ class EventsController < ApplicationController
     render :fetch_and_save_events
   end
 
-
   def events_today 
     if !params[:page] || !params[:size]
         redirect_to :page => params[:page] ||= @@page, :size => params[:size] ||= @@size and return false
     end
     @events = Event.events_today(session, params[:page] , params[:size])
-    @when = "Today"
+    @when = "Today's Events"
     render :events_list
   end
 
@@ -93,7 +92,7 @@ class EventsController < ApplicationController
         redirect_to :page => params[:page] ||= @@page, :size => params[:size] ||= @@size and return false
     end
     @events = Event.events_tomorrow(session, params[:page] ||= @@page , params[:size] ||= @@size)
-    @when = "Tomorrow"
+    @when = "Tomorrow's Events"
     render :events_list
   end
   
@@ -102,7 +101,7 @@ class EventsController < ApplicationController
         redirect_to :page => params[:page] ||= @@page, :size => params[:size] ||= @@size and return false
     end
     @events = Event.events_this_week(session, params[:page] ||= @@page , params[:size] ||= @@size)
-    @when = "This Week"
+    @when = "This Week's Events"
     render :events_list
   end
 
@@ -111,7 +110,7 @@ class EventsController < ApplicationController
         redirect_to :page => params[:page] ||= @@page, :size => params[:size] ||= @@size and return false
     end
    @events = Event.events_past(session, params[:page] ||= @@page, params[:size] ||= @@size)
-   @when = "Past"
+   @when = "Past Events"
    render :events_list
   end
 
