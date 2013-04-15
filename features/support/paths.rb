@@ -14,6 +14,7 @@ module NavigationHelpers
     case page_name
 
      when /^the (ColgateCalendar )?home page$/ then '/'
+     when /^the events page for (.*) with page number (.*) and size (.*)$/ then "/events/#{$1}?page=#{$2}&size=#{$3}"
      when /^the events page for (.*)$/ then "/events/#{$1}"
      when /^the page that activates event-fetching$/ then '/fetch_and_save_events'
      when /^the events listing page$/ then "/events"
