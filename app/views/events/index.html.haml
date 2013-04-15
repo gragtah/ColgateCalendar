@@ -4,7 +4,8 @@
 %section#header
  %h1 Listing all events
 
- %div#flash-info= flash[:info]
+-if @events.count > 0 then
+ = "#{@events.count} events stored in database."
 
 %section#content
  %table#events
