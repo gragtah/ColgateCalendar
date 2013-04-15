@@ -7,8 +7,8 @@
  %div#flash-info= flash[:info]
  
  %div#account
-  - if @logged_in then
-   %div= @username
+  - if session[:logged_in] then
+   %div= "Logged in as #{session[:username]}"
    %div= link_to 'Logout', 'user/logout'
   - else
    %div= link_to 'Login', 'user/login'
