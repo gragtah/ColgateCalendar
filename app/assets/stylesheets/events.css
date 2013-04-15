@@ -54,3 +54,7 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
 	background-color: #FFF;
 }
+
+tbody tr a {
+display: block; width: 100%; height: 100%; 	
+}

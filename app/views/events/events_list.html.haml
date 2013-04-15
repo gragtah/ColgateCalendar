@@ -19,10 +19,10 @@
   %tbody
    - @events.each do |event|
     %tr
-     %td= event.title 
-     %td= event.location
-     %td= event.start
-     %td= event.finish
+     %td= link_to "#{event.title}", event_path(event)
+     %td= link_to "#{event.location}", event_path(event)
+     %td= link_to "#{event.start}", event_path(event)
+     %td= link_to "#{event.finish}", event_path(event)
      - if session[:logged_in] then
       %td
        = link_to "upvote", event_upvote_path(:id => event.id)
