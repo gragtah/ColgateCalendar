@@ -25,3 +25,5 @@ Given /the following events exist/ do |events_table|
         Event.create!(event)
     end
 end
+
+#TODO When I follow link for event

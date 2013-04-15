@@ -15,13 +15,11 @@ Background: Events exist with downvotes and upvotes
 
 
   And I am logged in as "user" with password "password"
-#The Following line does not work for this feature although it has for previous ones....
   And I am on the home page
 
 
-
+#TODO: Figure out how to 
 Scenario: upvote an event
-  
   When I follow "Today"
   And I follow "upvote" for "Free Food"
   Then I should see "Free Food"
