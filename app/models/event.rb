@@ -3,6 +3,7 @@ require 'will_paginate'
 class Event < ActiveRecord::Base
   validates :guid, :uniqueness => {:scope => :start}
   attr_accessible :contact_link, :contact_name, :contact_phone, :description, :finish, :event_link, :guid, :location, :start, :tags, :title
+  acts_as_voteable
 
   def self.fetch_and_save_events
     eventListJsonString = eat("http://calendar.colgate.edu/webcache/v1.0/jsonDays/7/list-json/no--filter/no--object.json")
@@ -56,5 +57,6 @@ class Event < ActiveRecord::Base
     @condition_array = ["start < ? AND finish > ?", (DateTime.now + 7).at_beginning_of_day, DateTime.now]
     get_events_after_filtering_by_tags(session, page, size) 
   end
+
 
 end
