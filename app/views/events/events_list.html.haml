@@ -1,19 +1,24 @@
-%h1 #{@when}'s Events
+%head
+ = stylesheet_link_tag 'events.css'
 
-%table#events
-    %thead
-        %tr
-            %th Title 
-            %th Location
-            %th Start
-            %th Finish
-    %tbody
-        - @events.each do |event|
-            %tr
-                %td= event.title 
-                %td= event.location
-                %td= event.start
-                %td= event.finish
+%section#header
+ %h1 #{@when}'s Events
+
+%section#content
+ %table#events
+  %thead
+   %tr
+    %th Title 
+    %th Location
+    %th Start
+    %th Finish
+  %tbody
+   - @events.each do |event|
+    %tr
+     %td= event.title 
+     %td= event.location
+     %td= event.start
+     %td= event.finish
 -# %td= link_to "More about #{movie.title}", movie_path(movie)
 
 -# = link_to 'Add new movie', new_movie_path
