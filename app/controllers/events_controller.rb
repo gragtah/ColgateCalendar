@@ -98,5 +98,10 @@ class EventsController < ApplicationController
     render :events_list
   end
 
-end
+  def events_past
+   @events = Event.events_past(session, params[:page] ||= @@page, params[:size] ||= @@size)
+   @when = "Past"
+   render :events_list
+  end
 
+end
