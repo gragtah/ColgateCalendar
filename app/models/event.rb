@@ -58,5 +58,14 @@ class Event < ActiveRecord::Base
     get_events_after_filtering_by_tags(session, page, size) 
   end
 
+#We are counting as past events all events which have a start time before the current time
+#Especially note that ongoing events will be included in the past events even if they have a while
+#before they end
+
+#TODO events need to be sorted in the reverse order
+  def self.events_past(session, page = 1, size = 10)
+    @condition_array = ["start < ?", DateTime.now]
+    get_events_after_filtering_by_tags(session, page, size)
+  end
 
 end

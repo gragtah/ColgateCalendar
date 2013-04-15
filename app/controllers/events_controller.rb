@@ -3,8 +3,8 @@ require 'eat'
 class EventsController < ApplicationController
   # GET /events
   # GET /events.json
-  @@page = 1
-  @@size = 10
+  @@page = "1"
+  @@size = "10"
   def index
     @events = Event.all
   end
@@ -75,28 +75,44 @@ class EventsController < ApplicationController
 
   def fetch_and_save_events
     @fetched_events_count = Event.fetch_and_save_events
-    flash[:info] = "#{@fetched_events_count} events stored in the database."
     render :fetch_and_save_events
   end
 
-    #TODO: do we need to pass session around explicitly?!
+
   def events_today 
-    @events = Event.events_today(session, params[:page] ||= @@page , params[:size] ||= @@size)
+    if !params[:page] || !params[:size]
+        redirect_to :page => params[:page] ||= @@page, :size => params[:size] ||= @@size and return false
+    end
+    @events = Event.events_today(session, params[:page] , params[:size])
     @when = "Today"
     render :events_list
   end
 
   def events_tomorrow
+    if !params[:page] || !params[:size]
+        redirect_to :page => params[:page] ||= @@page, :size => params[:size] ||= @@size and return false
+    end
     @events = Event.events_tomorrow(session, params[:page] ||= @@page , params[:size] ||= @@size)
     @when = "Tomorrow"
     render :events_list
   end
   
   def events_this_week
+    if !params[:page] || !params[:size]
+        redirect_to :page => params[:page] ||= @@page, :size => params[:size] ||= @@size and return false
+    end
     @events = Event.events_this_week(session, params[:page] ||= @@page , params[:size] ||= @@size)
     @when = "This Week"
     render :events_list
   end
 
-end
+  def events_past
+    if !params[:page] || !params[:size]
+        redirect_to :page => params[:page] ||= @@page, :size => params[:size] ||= @@size and return false
+    end
+   @events = Event.events_past(session, params[:page] ||= @@page, params[:size] ||= @@size)
+   @when = "Past"
+   render :events_list
+  end
 
+end
