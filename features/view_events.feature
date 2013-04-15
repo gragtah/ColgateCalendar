@@ -42,4 +42,13 @@ Scenario: fetching events from web feed and viewing entire list
     Then I should see "events fetched." 
     And I follow "View Listing of All Events"
     And I should see "events stored in database."
-
+    
+Scenario: viewing event details
+   When I follow "Today"
+   And I follow "Soccer game vs Bucknell"
+   Then I should see "Soccer game vs Bucknell"
+   And I should see "Description"
+   And I should see "Start Time"
+   And I should see "Finish Time"
+   And I should see "Location"
+   And I should see "Contact"

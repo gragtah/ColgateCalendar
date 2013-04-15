@@ -6,8 +6,8 @@ Feature: Leave Rating for Events
 Background: Events exist with downvotes and upvotes
   
   Given the following users exist:
-    | username | password|
-    | user | password|
+    | username | password| tags |
+    | user     | password| sports | 
 
   And the following events exist:
     | title     |location   | start       | finish         | tags   | guid |
@@ -15,49 +15,53 @@ Background: Events exist with downvotes and upvotes
 
 
   And I am logged in as "user" with password "password"
-#The Following line does not work for this feature altghtough it has for previous ones....
-  And I am on the events page for week
+#The Following line does not work for this feature although it has for previous ones....
+  And I am on the home page
 
 
-# We need to figure out how to associate checkboxes with given events 
 
 Scenario: upvote an event
-  Given "upvote" for "Free Food" is not checked
-  And "downvote" for "Free Food" is not checked
-  When I check "upvote" for "Free Food"
-  Then "upvote" for "Free Food" should be checked
-  And "downvote" for "Free Food" should not be checked
+  
+  When I follow "Today"
+  And I follow "upvote" for "Free Food"
+  Then I should see "Free Food"
+  And I should see "Free Food has been upvoted"
+
 
 Scenario: downvote an event
-  Given "upvote" for "Free Food" is not checked
-  And "downvote" for "Free Food" is not checked
-  When I check "downvote" for "Free Food"
-  Then "downvote" for "Free Food" should be checked
-  And "upvote" for "Free Food" should not be checked
+  When I follow "Today"
+  And I follow "downvote" for "Free Food"
+  Then I should see "Free Food"
+  And I should see "Free Food has been downvoted"
 
 
 Scenario: un-upvote an event
-    Given "upvote" for "Free Food" is checked
-    When I uncheck "upvote" for "Free Food"
-    Then "upvote" for "Free Food" should not be checked
-    And "downvote" for "Free Food" should not be checked
+  When I follow "Today"
+  And I see "upvoted" for "Free Food"
+  And I follow "upvoted" for "Free Food"
+  Then I should see "upvote" for "Free Food"
+  And I should see "downvote" for "Free Food"
 
 Scenario: un-downvote an event
-    Given "downvote" for "Free Food" is checked
-    When I uncheck "downvote" for "Free Food"
-    Then "downvote" for "Free Food" should not be checked
-    And "upvote" for "Free Food" should not be checked
+  When I follow "Today"
+  And I see "downvoted" for "Free Food"
+  And I follow "downvoted" for "Free Food"
+  Then I should see "downvote" for "Free Food"
+  And I should see "upvote" for "Free Food"
 
 
 Scenario: switch from upvote to downvote
-    Given "upvote" for "Free Food" is checked
-    When I check "downvote" for "Free Food"
-    Then "downvote" for "Free Food" should be checked
-    And "upvote" for "Free Food" should not be checked
+  When I follow "Today"
+  And I see "upvoted" for "Free Food"
+  And I follow "downvote" for "Free Food"
+  Then I should see "Free Food has been downvoted"
+  And I should see "upvote" for "Free Food"
+  And I should see "downvoted" for "Free Food"
 
- Scenario: switch from downvote to upvote
-    Given "downvote" for "Free Food" is checked
-    When I check "upvote" for "Free Food"
-    Then "upvote" for "Free Food" should be checked
-    And "downvote" for "Free Food" should not be checked
-
+Scenario: switch from downvote to upvote
+  When I follow "Today"
+  And I see "downvoted" for "Free Food"
+  And I follow "upvote" for "Free Food"
+  Then I should see "Free Food has been upvoted"
+  And I should see "downvote" for "Free Food"
+  And I should see "upvoted" for "Free Food"
