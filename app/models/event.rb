@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
     eventListJsonArray.count
   end
   
-  def self.get_events_after_filtering_by_tags(session, page, size)
+  def self.get_events_after_filtering_by_tags(session, page, size, order = "")
     if session[:logged_in] == true 
         @username = session[:username]
         tags = User.find_by_username(@username).tags.downcase.split(',')
@@ -37,7 +37,7 @@ class Event < ActiveRecord::Base
         @condition_array += (tags.map { |s| '%' + s.downcase + '%' })
     end
 #    Event.find(:all, :conditions => @condition_array)
-    paginate :per_page => size, :page => page, :conditions => @condition_array
+    paginate :per_page => size, :page => page, :conditions => @condition_array, :order => order
   end
 
 #TODO: make method that takes params as "events_today, events_tomorrow" etc
@@ -65,7 +65,8 @@ class Event < ActiveRecord::Base
 #TODO events need to be sorted in the reverse order
   def self.events_past(session, page = 1, size = 10)
     @condition_array = ["start < ?", DateTime.now]
-    get_events_after_filtering_by_tags(session, page, size)
+    order = "finish DESC"
+    get_events_after_filtering_by_tags(session, page, size, order)
   end
 
 end

@@ -2,7 +2,9 @@
  = stylesheet_link_tag 'events.css'
 
 %section#header
- %h1 #{@when}'s Events
+ %h1 #{@when}
+
+ = will_paginate @posts
 
 %section#content
  %table#events
@@ -12,6 +14,8 @@
     %th Location
     %th Start
     %th Finish
+    - if session[:logged_in] then
+     %th Vote
   %tbody
    - @events.each do |event|
     %tr
@@ -19,6 +23,10 @@
      %td= event.location
      %td= event.start
      %td= event.finish
+     - if session[:logged_in] then
+      %td
+       = link_to "upvote", event_upvote_path(:id => event.id)
+       = link_to "downvote", event_downvote_path(event)
 -# %td= link_to "More about #{movie.title}", movie_path(movie)
 
 -# = link_to 'Add new movie', new_movie_path

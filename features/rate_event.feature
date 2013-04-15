@@ -9,7 +9,7 @@ Background: Events exist with downvotes and upvotes
     | username | password|
     | user | password|
 
-  Given the following events exist:
+  And the following events exist:
     | title     |location   | start       | finish         | tags   | guid |
     | Free Food | Andy Kerr | TODAYS_DATE | TOMORROWS_DATE | sports | test1 |
 

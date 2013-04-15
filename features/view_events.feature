@@ -8,8 +8,9 @@ Background: on the home page
     Given I am on the home page
     And the following events exist:
        | title                     | location          | start           | finish            |   tags      | guid  |
-       | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE     | TOMORROWS_DATE |   Sports    | test1 |
-       | Modern Art exhibition     | Dana Arts Center  | TOMORROWS_DATE  | TOMORROWS_DATE |   Arts      | test2 |
+       | Soccer game vs Bucknell   | Andy Kerr         | TODAYS_DATE     | TOMORROWS_DATE    |   Sports    | test1 |
+       | Modern Art exhibition     | Dana Arts Center  | TOMORROWS_DATE  | TOMORROWS_DATE    |   Arts      | test2 |
+       | Sound and Art             | Dana Arts Center  | YESTERDAYS_DATE | YESTERDAYS_DATE   |   Arts      | test3 |
 
 Scenario: view today's events
     When I follow "Today"
@@ -28,6 +29,13 @@ Scenario: view this week's events
     Then I should be on the events page for week
     And I should see "Soccer game vs Bucknell" 
     And I should see "Modern Art exhibition" 
+
+Scenario: view past events
+    When I follow "In The Past"
+    Then I should be on the events page for past
+    And I should see "Sound and Art" 
+    And I should not see "Soccer game vs Bucknell" 
+    And I should not see "Modern Art exhibition" 
 
 Scenario: fetching events from web feed and viewing entire list
     When I go to the page that activates event-fetching 
