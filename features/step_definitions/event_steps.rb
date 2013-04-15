@@ -6,6 +6,8 @@ Given /the following events exist/ do |events_table|
             date = DateTime.now
         elsif date == 'TOMORROWS_DATE'
             date = DateTime.now.tomorrow 
+        elsif date == 'YESTERDAYS_DATE'
+            date = DateTime.yesterday.at_beginning_of_day
         end
         date
     end
@@ -14,6 +16,8 @@ Given /the following events exist/ do |events_table|
             date = DateTime.now 
         elsif date == 'TOMORROWS_DATE'
             date = DateTime.now.tomorrow 
+        elsif date == 'YESTERDAYS_DATE'
+            date = DateTime.yesterday.at_beginning_of_day
         end
         date
     end
