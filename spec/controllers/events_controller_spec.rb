@@ -7,31 +7,25 @@ describe EventsController do
                         session[:username] = "user"
                         fake_user = mock(User, :username => "user", :tags => "arts") 
                         User.stub!(:find_by_username).with("user").and_return(fake_user)
-#Event.should_receive(:find).with(:all, hash_including(:conditions => anything))
                 end
 		it "should render events today" do
-                        Event.should_receive(:events_today)
 			get :events_today, {:page => 1, :size => 1}
         		response.should render_template :events_list
 		end
 		it "should render events tomorrow" do
-                        Event.should_receive(:events_tomorrow)
 			get :events_tomorrow, {:page => 1, :size => 1}
 			response.should render_template :events_list
 		end
 		it "should render events this week" do
-                        Event.should_receive(:events_this_week)
 			get :events_this_week, {:page => 1, :size => 1}
 			response.should render_template :events_list
 		end
                 it "should render past events" do
-                        Event.should_receive(:events_past)
                         get :events_past, {:page => 1, :size => 1}
                         response.should render_template :events_list
                 end
 		it "should redirect with correct params for events today" do
 			get :events_today
-#        		response.should redirect_to(:events_today)
                         response.redirect_url.should match(%r{/events/today})
 		end
 		it "should redirect with correct params for events tomorrow" do
