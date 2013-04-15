@@ -43,7 +43,6 @@ describe EventsController do
 		end
 	end
 	
-	#Everything below this line is unimplemented and should fail
 	describe "lookup event details" do
 		it "should display details for a given event" do
 			fake_event = mock(Event, :guid => 0, :description => "Walrus Hunting! Bring your own crossbow.")
@@ -51,10 +50,11 @@ describe EventsController do
 			#fake_event.should_receive(:details)
                         Event.should_receive(:find).with(1).and_return(fake_event)
                         get :show, {:id => 1}
-			response.should render_template :show
-			#To do: this should render the URL of the event profile.
+			response.should render_template :event
 		end
 	end
+
+#Everything below this line is unimplemented and should fail
 	
 	describe "ratings functionality" do
 		it "should allow users to leave upvotes" do
