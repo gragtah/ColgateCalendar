@@ -24,10 +24,27 @@ describe EventsController do
 			get :events_this_week, {:page => 1, :size => 1}
 			response.should render_template :events_list
 		end
-                it "should render past events sorted in reverse chronological order" do
+                it "should render past events" do
                         Event.should_receive(:events_past)
                         get :events_past, {:page => 1, :size => 1}
                         response.should render_template :events_list
+                end
+		it "should redirect with correct params for events today" do
+			get :events_today
+#        		response.should redirect_to(:events_today)
+                        response.redirect_url.should match(%r{/events/today})
+		end
+		it "should redirect with correct params for events tomorrow" do
+			get :events_tomorrow
+                        response.redirect_url.should match(%r{/events/tomorrow})
+		end
+		it "should redirect with correct params for events this week" do
+			get :events_this_week
+                        response.redirect_url.should match(%r{/events/week})
+		end
+                it "should redirect with correct params for past events" do
+                        get :events_past
+                        response.redirect_url.should match(%r{/events/past})
                 end
 	end
 
