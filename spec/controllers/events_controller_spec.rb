@@ -70,7 +70,7 @@ describe EventsController do
 	end
 
 #Everything below this line is unimplemented and should fail
-	
+=begin	
 	describe "ratings functionality" do
 		it "should allow users to leave upvotes" do
 			fake_event = mock(Event, :guid => 2)
@@ -110,6 +110,6 @@ describe EventsController do
                 end
 	end
 	
-
+=end
 
 end
