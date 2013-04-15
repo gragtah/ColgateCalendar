@@ -5,24 +5,28 @@ describe EventsController do
                 before(:each) do
                         session[:logged_in] = true
                         session[:username] = "user"
-    	        	fake_user = mock(User, :username => "user", :tags => "arts") 
+                        fake_user = mock(User, :username => "user", :tags => "arts") 
                         User.stub!(:find_by_username).with("user").and_return(fake_user)
-                        Event.should_receive(:find).with(:all, hash_including(:conditions => anything))
+#Event.should_receive(:find).with(:all, hash_including(:conditions => anything))
                 end
 		it "should render events today" do
-			get :events_today
-			response.should render_template :events_list
+                        Event.should_receive(:events_today)
+			get :events_today, {:page => 1, :size => 1}
+        		response.should render_template :events_list
 		end
 		it "should render events tomorrow" do
-			get :events_tomorrow
+                        Event.should_receive(:events_tomorrow)
+			get :events_tomorrow, {:page => 1, :size => 1}
 			response.should render_template :events_list
 		end
 		it "should render events this week" do
-			get :events_this_week
+                        Event.should_receive(:events_this_week)
+			get :events_this_week, {:page => 1, :size => 1}
 			response.should render_template :events_list
 		end
                 it "should render past events sorted in reverse chronological order" do
-                        get :events_past
+                        Event.should_receive(:events_past)
+                        get :events_past, {:page => 1, :size => 1}
                         response.should render_template :events_list
                 end
 	end
