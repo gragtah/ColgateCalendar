@@ -14,7 +14,7 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2013-04-17T16:39:15-04:00">2013-04-17T16:39:15-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2013-04-17T19:55:26-04:00">2013-04-17T19:55:26-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.03
+         5.06
        </span>
     </span> hits/line)
   </h2>
@@ -107,7 +107,7 @@
         <td>44</td>
         <td>44</td>
         <td>0</td>
-        <td>29.9</td>
+        <td>30.2</td>
       </tr>
       
       <tr>
@@ -220,7 +220,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         10.87
+         10.97
        </span>
     </span> hits/line)
   </h2>
@@ -252,7 +252,7 @@
         <td>44</td>
         <td>44</td>
         <td>0</td>
-        <td>29.9</td>
+        <td>30.2</td>
       </tr>
       
       <tr>
@@ -1518,26 +1518,26 @@
           <code class="ruby">    eventListJsonArray.each do |event|</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="12">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="12">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent = {}</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="13">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="13">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent[&quot;title&quot;]= event[&quot;summary&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="14">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="14">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent[&quot;guid&quot;]= event[&quot;guid&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="15">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="15">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent[&quot;location&quot;]= (event[&quot;location&quot;][&quot;address&quot;]).gsub(/^z\*/,'')</code>
         </li>
@@ -1548,56 +1548,56 @@
           <code class="ruby">#TODO: timezone issue, for events/tomorrow conversion UTC TO EDT</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="17">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="17">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent[&quot;start&quot;]= DateTime.parse(event[&quot;start&quot;][&quot;utcdate&quot;]).in_time_zone(&quot;Eastern Time (US &amp; Canada)&quot;).to_s</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="18">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="18">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent[&quot;finish&quot;]= DateTime.parse(event[&quot;end&quot;][&quot;utcdate&quot;]).in_time_zone(&quot;Eastern Time (US &amp; Canada)&quot;).to_s</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="19">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="19">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent[&quot;event_link&quot;]= event[&quot;eventlink&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="20">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="20">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent[&quot;description&quot;]= event[&quot;description&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="21">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="21">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent[&quot;tags&quot;]= event[&quot;categories&quot;].join(',').downcase</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="22">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="22">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent[&quot;contact_name&quot;]= event[&quot;contact&quot;][&quot;name&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="23">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="23">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent[&quot;contact_phone&quot;]= event[&quot;contact&quot;][&quot;phone&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="24">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="24">
+          <span class="hits">98</span>
           
           <code class="ruby">        newEvent[&quot;contact_link&quot;]= event[&quot;contact&quot;][&quot;link&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="25">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="25">
+          <span class="hits">98</span>
           
           <code class="ruby">        Event.create(newEvent)</code>
         </li>
