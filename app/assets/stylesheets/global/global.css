@@ -16,12 +16,12 @@ a:active {
 
 body {
 	color: #000;
-	font-size: large;
+	font-size: 1em;
 	margin: 5px;
 }
 
 h1 {
-	font-size: xx-large;
+	font-size: 3em;
 }
 
 h2 {
@@ -36,11 +36,12 @@ h2 {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#862633', endColorstr='#ad3234',GradientType=0 );
 	
 	border-radius: 5px;
-	font-size: x-large;
+	font-size: 2em;
 	margin: 5px auto;
 	padding: 5px 0;
 	text-align: center;
-	width: 150px;
+	width: 40%;
+	max-width: 200px;
 }
 
 h2 > a, h2 > a:visited {
