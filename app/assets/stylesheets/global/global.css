@@ -18,11 +18,30 @@ body {
 	color: #000;
 	font-size: 1em;
 	margin: 5px;
-	width: 100%;
 }
 
-h1 {
-	font-size: 2.5em;
+@media all and (min-width: 721px) {
+	h1 {
+		font-size: 2.5em;
+	}
+
+	h2 {
+		font-size: 2em;
+		max-width: 200px;
+		width: 40%;
+	}
+}
+
+@media all and (max-width: 720px) {
+	h1 {
+		font-size: 5em;
+	}
+
+	h2 {
+		font-size: 3em;
+		max-width: 700px;
+		width: 80%;
+	}
 }
 
 h2 {
@@ -35,14 +54,11 @@ h2 {
 	background: -ms-linear-gradient(top, rgba(134,38,51,1) 0%,rgba(173,50,52,1) 100%);
 	background: linear-gradient(to bottom, rgba(134,38,51,1) 0%,rgba(173,50,52,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#862633', endColorstr='#ad3234',GradientType=0 );
-	
+
 	border-radius: 5px;
-	font-size: 2em;
 	margin: 5px auto;
 	padding: 5px 0;
 	text-align: center;
-	width: 40%;
-	max-width: 200px;
 }
 
 h2 > a, h2 > a:visited {
