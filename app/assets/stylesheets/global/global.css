@@ -35,6 +35,7 @@ body {
 @media all and (max-width: 720px) {
 	h1 {
 		font-size: 5em;
+		color: #F00;
 	}
 
 	h2 {
