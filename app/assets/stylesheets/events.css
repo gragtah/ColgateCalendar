@@ -9,7 +9,12 @@ td, th {
 }
 
 td {
+	padding: 0.2em;
 	text-wrap: none;
+}
+
+td > a {
+	color: #000;
 }
 
 td:nth-child(1) {
@@ -17,15 +22,15 @@ td:nth-child(1) {
 }
 
 td:nth-child(2) {
-	width: 30%;
+	width: 20%;
 }
 
 td:nth-child(3) {
-	width: 10%;
+	width: 15%;
 }
 
 td:nth-child(4) {
-	width: 10%;
+	width: 15%;
 }
 
 td:nth-child(5), td:nth-child(6), td:nth-child(7) {
@@ -44,7 +49,6 @@ thead > tr {
 
 tr {
 	border-bottom: 0.1em solid #AD3234;
-	padding: 0.2em;
 }
 
 tr:nth-child(even) {
