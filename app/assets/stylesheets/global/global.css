@@ -20,7 +20,7 @@ body {
 	margin: 5px;
 }
 
-@media all and (min-width: 721px) {
+@media all {
 	h1 {
 		font-size: 2.5em;
 	}
