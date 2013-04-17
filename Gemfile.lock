@@ -165,6 +165,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   capybara
   coffee-rails (~> 3.2.1)
   cucumber-rails
