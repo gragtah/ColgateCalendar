@@ -35,11 +35,11 @@ body {
 @media all and (max-device-width: 720px) {
 	h1 {
 		font-size: 5em;
-		color: #F00;
 	}
 
 	h2 {
 		font-size: 3em;
+		height: 15%;
 		max-width: 700px;
 		width: 80%;
 	}
