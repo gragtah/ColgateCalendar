@@ -16,12 +16,12 @@ a:active {
 
 body {
 	color: #000;
-	font-size: 16px;
+	font-size: large;
 	margin: 5px;
 }
 
 h1 {
-	font-size: 30px;
+	font-size: xx-large;
 }
 
 h2 {
@@ -36,7 +36,7 @@ h2 {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#862633', endColorstr='#ad3234',GradientType=0 );
 	
 	border-radius: 5px;
-	font-size: 18px;
+	font-size: x-large;
 	margin: 5px auto;
 	padding: 5px 0;
 	text-align: center;
