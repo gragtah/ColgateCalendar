@@ -7,7 +7,6 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	}
 
 	h2 > a {
-		font-size: 2em;
 		max-width: 200px;
 		width: 40%;
 	}
@@ -69,6 +68,7 @@ h2 > a {
 	
 	border-radius: 0.2em;
 	display: block;
+	font-size: 2em;
 	margin: 0.2em auto;
 	padding: 0.2em 0;
 	text-align: center;
