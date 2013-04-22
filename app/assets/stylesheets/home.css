@@ -1,11 +1,5 @@
-@media all {
-	#account > div {
-		font-size: 1.7em;
-	}
-}
-
 @media all and (max-device-width: 720px) {
 	#account > div {
-		font-size: 4em;
+		font-size: 3em;
 	}
 }
