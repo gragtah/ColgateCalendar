@@ -34,7 +34,7 @@ body {
 
 @media all and (max-device-width: 720px) {
 	body {
-		font-size: 3em;
+		font-size: 2em;
 	}
 
 	h2 > a {
