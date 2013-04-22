@@ -23,3 +23,12 @@ Scenario: view events with chosen keywords
     And I should see "Soccer game vs Bucknell"
     And I should see "Modern Art exhibition"
     But I should not see "Lecture on Number theory"
+
+Scenario: edit my keywords from settings
+    When I follow "Settings"
+    Then I should be on the settings page
+    And I should see "Keywords"
+    When I press "Faculty"
+    And I press "Save Keywords"
+    Then I should be on the settings page
+    And I should see "Settings updated"
