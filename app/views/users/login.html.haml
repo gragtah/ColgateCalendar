@@ -1,14 +1,16 @@
-%h1 Login
+%section#header
+ %h1 Login
+ %div= flash[:warning]
 
-%div= flash[:warning]
-
-%h3= link_to "Home", '/'
-= form_tag '/user/authenticate', :method => :post do 
- %ul
- %li
-  = label :login, :username, 'Username: '
-  = text_field :login, 'username'
- %li
-  = label :login, :password, 'Password: '
-  = password_field :login, 'password'
- = submit_tag 'Login'
+%section#content
+ %h3= link_to 'Home', '/'
+ = form_tag '/user/authenticate', :method => :post do 
+  %ul
+   %li
+    = label :login, :username, 'Username: '
+    = text_field :login, 'username'
+   %li
+    = label :login, :password, 'Password: '
+    = password_field :login, 'password'
+   %li
+    = submit_tag 'Login'
