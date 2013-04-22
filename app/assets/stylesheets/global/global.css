@@ -76,6 +76,10 @@ h2 > a:active {
 	color: #999;
 }
 
+h3 {
+	margin: 0.5em 0;
+}
+
 section {
 	margin-bottom: 1em;
 }

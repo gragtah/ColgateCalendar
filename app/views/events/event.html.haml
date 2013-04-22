@@ -2,25 +2,27 @@
 
 %h1 #{@event.title}
 
-%ul#info
+%section#content
+ %h3= link_to "Home", '/'
+ %ul#info
   %li
-    Description:
-    = @event.description
+   Description:
+   = @event.description
   %li
-    Start Time:
-    = @event.start
+   Start Time:
+   = @event.start
   %li
-    Finish Time:
-    = @event.finish
+   Finish Time:
+   = @event.finish
   %li
-    Location:
-    = @event.location
+   Location:
+   = @event.location
   %li
-    Contact:
-    = @event.contact_name
-    = @event.contact_phone
+   Contact:
+   = @event.contact_name
+   = @event.contact_phone
 
 %tbody
-  %th Rating:
-  %th Textbox:
+ %th Rating:
+ %th Textbox:
   
