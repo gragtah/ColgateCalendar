@@ -5,6 +5,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	body {
 		font-size: 2em;
 	}
+	
+	h1 {
+		font-size: 4em;
+	}
 
 	h2 > a {
 		height: 30%;
