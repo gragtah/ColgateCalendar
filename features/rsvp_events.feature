@@ -12,9 +12,17 @@ Background: on the home page
        | Modern Art exhibition     | Dana Arts Center  | TOMORROWS_DATE  | TOMORROWS_DATE    |   Arts      | test2 |
        | Sound and Art             | Dana Arts Center  | YESTERDAYS_DATE | YESTERDAYS_DATE   |   Arts      | test3 |
 
-Scenario: RSVP to x event
+Scenario: RSVP to an event
    When I follow "Today"
    And I follow "Soccer game vs Bucknell"
    And I follow "RSVP"
    Then I should be see "Soccer game vs Bucknell"
    And I should see "You have been RSVPed"
+
+Scenario: UnRSVP to an event
+		When I follow "Today"
+		And I follow "Soccer game vs Bucknell"
+		And I see "You are currently RSVPed"
+		And I follow "RSVP"
+		Then I should see "Soccer game vs Bucknell"
+		And I should see "You are no longer RSVPed"
