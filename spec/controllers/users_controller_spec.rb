@@ -62,5 +62,25 @@ describe UsersController, :type => :controller do
 		end
 	end
 
+        describe "user settings" do
+            it "should allow logged-in user to see the settings page" do
+                session[:username] = "user"
+                session[:logged_in] = true
+		fake_user = mock(User, :id => 1, :username => "user", :password => "password") 
+      		User.stub!(:find_by_username).with("user").and_return(fake_user)
+	        get :settings, {:id => 1}
+		response.should render_template(:settings)
+            end
+            it "should allow logged-in user to update tags/keywords" do
+                session[:username] = "user"
+                session[:logged_in] = true
+		fake_user = mock(User, :id => 1, :username => "user", :password => "password") 
+      		User.stub!(:find_by_username).with("user").and_return(fake_user)
+                fake_user.stub!(:update_tags).with(anything)
+                put :update_tags, {:id => 1, :tags => "arts,athletics,faculty"}
+		response.should redirect_to "/user/1/settings"
+            end
+        end
+    
 
 end
