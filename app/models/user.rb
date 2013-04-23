@@ -1,3 +1,4 @@
+require 'thumbs_up'
 class User < ActiveRecord::Base
     attr_accessible :username, :password, :email, :tags
     acts_as_voter
@@ -13,12 +14,22 @@ class User < ActiveRecord::Base
         user = User.find_by_username(username)
         !user.nil? and user.correct_password?(password)
     end
-    def upvote(event)
-    	user = User.find_by_username(username)
-    	user.vote_for(event)
-    end
-    def downvote(event)
-    	user = User.find_by_username(username)
-    	user.vote_against(event)
-    end
+
+#   def update_tags
+#       return true
+#    end
+
+#   def upvote(event)
+#   	user = User.find_by_username(username)
+#   	user.vote_for(event)
+#   end
+#  def downvote(event)
+#   	user = User.find_by_username(username)
+#   	user.vote_against(event)
+#   end
+#   def self.upvote(event_id)
+#    event = Event.find(event_id)
+#    user = User.find_by_username("user") #session[:username])
+#    user.vote_against(event)
+#    end
 end

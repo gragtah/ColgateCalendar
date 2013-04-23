@@ -1,5 +1,6 @@
 require 'json'
 require 'eat'
+require 'thumbs_up'
 class EventsController < ApplicationController
   # GET /events
   # GET /events.json
@@ -114,4 +115,12 @@ class EventsController < ApplicationController
    render :events_list
   end
 
+# def upvote_on_event
+#    User.upvote(params[:id].to_i)
+#    render :events_list
+#  end
+
+# def downvote_on_event(event)
+#    User.find_by_username(session[:username]).vote_against(event)
+#  end
 end
