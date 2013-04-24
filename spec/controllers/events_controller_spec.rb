@@ -96,16 +96,33 @@ describe EventsController do
 			fake_event.should_receive(:downvote).with("user").and_return(false)
 		end
 
-                it "should allow certain pre-determined users to view event ratings" do
-                        session[:logged_in] = true
-                        session[:username] = "user"
-                        #TODO: Decide if user "user" should be the one we hand over to event admins to view ratings for all events, or add a column to certain users that allow viewing their own event's ratings. 
-                        # Since events are entered into an external system, how do we connect users to events they 'created'? And also, should they only be able to view their own ratings? Relative sense of rating is probably more helpful.
-                        Event.should_receive(:rating_for_event).with(1)
-                        get :show, {:id => 1}
+        it "should allow certain pre-determined users to view event ratings" do
+            session[:logged_in] = true
+            session[:username] = "user"
+#TODO: Decide if user "user" should be the one we hand over to event admins to view ratings for all events, or add a column to certain users that allow viewing their own event's ratings. 
+# Since events are entered into an external system, how do we connect users to events they 'created'? And also, should they only be able to view their own ratings? Relative sense of rating is probably more helpful.
+            Event.should_receive(:rating_for_event).with(1)
+            get :show, {:id => 1}
 			response.should render_template :show
 
-                end
+        end
+	end
+	
+	describe "RSVPing" do
+	
+		it "should allow users to RSVP and un-RSVP to events" do
+			fake_event = mock(Event, :guid => 2)
+			session[:logged_in] = true
+			session[:username] = "user"
+			fake_user = mock(User, :username => "user")
+			#Two different methods, one to check whether a user has RSVPed, and another to update the RSVP list.
+			fake_event.should_receive(:checkRSVP).with("user").and_return(false)
+			fake_event.should_receive(:addRSVP).with("user").and_return(true)
+			fake_event.should_receive(:checkRSVP).with("user").and_return(true)
+			fake_event.should_receive(:removeRSVP).with("user").and_return(true)
+			fake_event.should_receive(:checkRSVP).with("user").and_return(false)
+			
+		end
 	end
 	
 
