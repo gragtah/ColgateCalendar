@@ -2,9 +2,9 @@ require 'date'
 require 'thumbs_up'
 require 'will_paginate'
 class Event < ActiveRecord::Base
+  acts_as_voteable
   validates :guid, :uniqueness => {:scope => :start}
   attr_accessible :contact_link, :contact_name, :contact_phone, :description, :finish, :event_link, :guid, :location, :start, :tags, :title
-  acts_as_voteable
 
   def self.fetch_and_save_events
     eventListJsonString = eat("http://calendar.colgate.edu/webcache/v1.0/jsonDays/7/list-json/no--filter/no--object.json")

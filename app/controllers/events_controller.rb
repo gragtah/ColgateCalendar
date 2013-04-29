@@ -115,12 +115,17 @@ class EventsController < ApplicationController
    render :events_list
   end
 
-# def upvote_on_event
-#    User.upvote(params[:id].to_i)
-#    render :events_list
-#  end
+ def upvote_on_event
+     session[:return_to] = request.referer
+     user = User.find_by_username(session[:username])
+     user.upvote(params[:id].to_i)
+     redirect_to session.delete(:return_to)
+  end
 
-# def downvote_on_event(event)
-#    User.find_by_username(session[:username]).vote_against(event)
-#  end
+ def downvote_on_event
+     session[:return_to] = request.referer
+     user = User.find_by_username(session[:username])
+     user.downvote(params[:id].to_i)
+     redirect_to session.delete(:return_to)
+  end
 end

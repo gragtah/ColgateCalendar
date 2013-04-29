@@ -4,7 +4,7 @@
 %section#header
  %h1 #{@when}
 
- = will_paginate @posts
+ = will_paginate @events
 
 %section#content
  %h3= link_to 'Home', '/'
@@ -28,6 +28,4 @@
       %td
        = link_to "upvote", event_upvote_path(:id => event.id)
        = link_to "downvote", event_downvote_path(event)
--# %td= link_to "More about #{movie.title}", movie_path(movie)
 
--# = link_to 'Add new movie', new_movie_path
