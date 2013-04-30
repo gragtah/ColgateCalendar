@@ -1,5 +1,6 @@
 require 'date'
 require 'thumbs_up'
+require 'will_paginate/array'
 require 'will_paginate'
 class Event < ActiveRecord::Base
   acts_as_voteable
@@ -39,8 +40,18 @@ class Event < ActiveRecord::Base
             @condition_array += (tags.map { |s| '%' + s.downcase + '%' })
         end
     end
-#    Event.find(:all, :conditions => @condition_array)
-    paginate :per_page => size, :page => page, :conditions => @condition_array, :order => order
+    #due to the way paginate works with lazy loading and dynamic query formation,
+    #this has to be one single statement.
+    results = Event.all(:conditions => @condition_array, :order => order).map { 
+        |event| 
+            vote = nil
+            vote_object = event.votes.where(:voter_id => session[:id]).first
+            if vote_object != nil
+                vote = vote_object.vote
+            end
+            [event, vote]
+    }.paginate(:per_page => size, :page => page)
+
   end
 
 #TODO: make method that takes params as "events_today, events_tomorrow" etc

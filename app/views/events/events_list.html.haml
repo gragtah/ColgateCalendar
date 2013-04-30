@@ -18,7 +18,8 @@
     - if session[:logged_in] then
      %th Vote
   %tbody
-   - @events.each do |event|
+   - @events.each do |event_vote_tuple|
+    - event, vote = event_vote_tuple.first, event_vote_tuple.second
     %tr
      %td= link_to "#{event.title}", event_path(event)
      %td= link_to "#{event.location}", event_path(event)
@@ -26,6 +27,12 @@
      %td= link_to "#{event.finish.nice_format}", event_path(event)
      - if session[:logged_in] then
       %td
-       = link_to "upvote", event_upvote_path(:id => event.id)
-       = link_to "downvote", event_downvote_path(event)
+       - if vote == true then
+        = "upvoted"
+       - else
+        = link_to "upvote", event_upvote_path(:id => event.id)
+       - if vote == false then
+        = "downvoted"
+       - else
+        = link_to "downvote", event_downvote_path(event)
 
