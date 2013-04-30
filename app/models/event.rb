@@ -34,8 +34,10 @@ class Event < ActiveRecord::Base
         tags = User.find_by_username(@username).tags.downcase.split(',')
 
         #Following code adds tag filtering to our SQL query, and the placeholders for the tags' values
-        @condition_array[0] << " AND (" << (["tags LIKE ?"] * tags.length).join(' OR ') << ")"
-        @condition_array += (tags.map { |s| '%' + s.downcase + '%' })
+        if tags.length > 0
+            @condition_array[0] << " AND (" << (["tags LIKE ?"] * tags.length).join(' OR ') << ")"
+            @condition_array += (tags.map { |s| '%' + s.downcase + '%' })
+        end
     end
 #    Event.find(:all, :conditions => @condition_array)
     paginate :per_page => size, :page => page, :conditions => @condition_array, :order => order

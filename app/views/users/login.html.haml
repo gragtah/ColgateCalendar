@@ -1,6 +1,8 @@
 %section#header
  %h1 Login
  %div= flash[:warning]
+= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
+
 
 %section#content
  %h3= link_to 'Home', '/'

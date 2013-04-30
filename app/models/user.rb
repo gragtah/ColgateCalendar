@@ -1,10 +1,21 @@
 require 'thumbs_up'
 class User < ActiveRecord::Base
+    devise :omniauthable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:google_oauth2]
     acts_as_voter
     attr_accessible :username, :password, :email, :tags
     
+    def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
+        data = access_token.info
+        user = User.where(:email => data["email"]).first
 
-#Needs updates. Needs to check session for a login boolean, for now this is a bogus method
+        unless user
+            user = User.create(username: data["name"],
+                               email: data["email"],
+                               password: Devise.friendly_token[0,20]
+                               )
+        end
+        user
+    end
 
     def correct_password?(pwd)
         self.password == pwd

@@ -38,6 +38,8 @@ gem 'haml'
 gem 'will_paginate', '~> 3.0.0'
 gem 'thumbs_up'
 gem 'activesupport'
+gem 'omniauth-google-oauth2'
+gem 'devise'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
