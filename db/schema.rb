@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430122649) do
+ActiveRecord::Schema.define(:version => 20130501184242) do
 
   create_table "eventlists", :force => true do |t|
     t.text     "info"
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(:version => 20130430122649) do
     t.datetime "finish"
     t.string   "event_link"
     t.text     "description"
-    t.string   "tags"
+    t.text     "tags",          :limit => 255
     t.string   "contact_name"
     t.string   "contact_phone"
     t.string   "contact_link"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "users", :force => true do |t|
