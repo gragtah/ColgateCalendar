@@ -34,5 +34,5 @@
        - if vote == false then
         = "downvoted"
        - else
-        = link_to "downvote", event_downvote_path(event)
+        = link_to "downvote", event_downvote_path(:id => event.id)
 

@@ -5,10 +5,13 @@ Feature: Leave Rating for Events
     I want to be able to rate events with an upvote or downvote
 
 Background: Events exist with downvotes and upvotes
-  
-  And the following events exist:
-    | title     |location   | start       | finish         | tags   | guid |
-    | Free Food | Andy Kerr | TODAYS_DATE | TOMORROWS_DATE | sports | test1 |
+Given the following users exist:
+   | username  | password | tags        |  email          |
+   | user      | password | art,sports | fake@colgate.edu|  
+ 
+ And the following events exist:
+    | title     |location   | start       | finish         | tags   | guid  | id |
+    | Free Food | Andy Kerr | TODAYS_DATE | TOMORROWS_DATE | sports | test1 | 1  |
 
 
 
