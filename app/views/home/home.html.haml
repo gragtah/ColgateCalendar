@@ -18,4 +18,5 @@
  %h2= link_to 'Tomorrow', 'events/tomorrow'
  %h2= link_to 'This Week', 'events/week'
  %h2= link_to 'In The Past', 'events/past' 
- %h2= link_to 'Settings', 'settings'
+ - if session[:logged_in] then
+  %h2= link_to 'Settings', "user/#{session[:id]}/settings"

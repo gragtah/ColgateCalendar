@@ -26,10 +26,17 @@ class User < ActiveRecord::Base
         !user.nil? and user.correct_password?(password)
     end
 
-
-#   def update_tags
-#       return true
-#    end
+   def update_tags(tags_list)
+        chosen_tags = []
+        tags_list ||= {"" => 1}
+        tags_list.each do |tag|
+            if tag.second == "1"
+                chosen_tags << tag.first
+            end
+        end
+       self.tags = chosen_tags.join(',').downcase
+       self.save!
+   end
 
   def upvote(event_id)
    event = Event.find(event_id)

@@ -25,8 +25,9 @@ class UsersController < ApplicationController
     end
     
     def settings
-        username = session[:username]
-        if session[:logged_in] == true and User.find_by_username(username).id == params[:id].to_i
+        if session[:logged_in] == true and session[:id].to_i == params[:id].to_i
+            @all_tags = ColgateCalendar::Application.config.tags
+            @selected_tags = User.find(session[:id]).tags.downcase.split(',')
             render 'settings'
         else
             redirect_to "/"
