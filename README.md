@@ -19,12 +19,12 @@ Zach, Jack and Andrew), and Colgate students, faculty and professors.
 
 
 NB:
-- call the /fetch_and_save_events route to update stored events
+- call the fetch and save events route to update stored events
 - To get the list of all tags that is then used in config/environment.rb: 
- From rails console
-x = Event.uniq.pluck(:tags)
-y = []
-x.each do |taglist|
- y += taglist.downcase.split(',')
-end
-y.uniq
+    From rails console
+    x = Event.uniq.pluck(:tags)
+    y = []
+    x.each do |taglist|
+        y += taglist.downcase.split(',')
+    end
+    y.uniq
