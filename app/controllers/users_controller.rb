@@ -2,7 +2,6 @@ require 'thumbs_up'
 class UsersController < ApplicationController
     
     def login
-        # render 'login'
         redirect_to user_omniauth_authorize_path(:google_oauth2)
     end
     
