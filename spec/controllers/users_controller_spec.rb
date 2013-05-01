@@ -58,7 +58,7 @@ describe UsersController, :type => :controller do
 	describe "login testing" do
 		it "should render login" do
 			get :login
-			response.should render_template(:login)
+			response.should redirect_to(user_omniauth_authorize_path(:google_oauth2))
 		end
 	end
 
