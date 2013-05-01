@@ -20,3 +20,8 @@ Given /^username "(.+)" has set the following tags: (.*)$/ do |username, tag_lis
     user.tags = tag_list.gsub(' ', '') 
     user.save!
 end
+
+#TODO make this actually able to upvote the event you are requesting, rather than just the first even
+When /^(?:|I )follow "upvote" for (.*)$/  do |event|
+  click_link("/events/upvote?id=1")
+end

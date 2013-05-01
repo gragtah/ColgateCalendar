@@ -5,10 +5,13 @@ Feature: Leave Rating for Events
     I want to be able to rate events with an upvote or downvote
 
 Background: Events exist with downvotes and upvotes
-  
-  And the following events exist:
-    | title     |location   | start       | finish         | tags   | guid |
-    | Free Food | Andy Kerr | TODAYS_DATE | TOMORROWS_DATE | sports | test1 |
+Given the following users exist:
+   | username  | password | tags        |  email          |
+   | user      | password | art,sports | fake@colgate.edu|  
+ 
+ And the following events exist:
+    | title     |location   | start       | finish         | tags   | guid  | id |
+    | Free Food | Andy Kerr | TODAYS_DATE | TOMORROWS_DATE | sports | test1 | 1  |
 
 
 
@@ -30,6 +33,7 @@ Scenario: downvote an event
 
 
 Scenario: un-upvote an event
+ Given I am a logged in user
  When I follow "Today"
  And I see "upvoted" for "Free Food"
  And I follow "upvoted" for "Free Food"
@@ -37,6 +41,7 @@ Scenario: un-upvote an event
  And I should see "downvote" for "Free Food"
 
 Scenario: un-downvote an event
+ Given I am a logged in user
  When I follow "Today"
  And I see "downvoted" for "Free Food"
  And I follow "downvoted" for "Free Food"
@@ -45,6 +50,7 @@ Scenario: un-downvote an event
 
 
 Scenario: switch from upvote to downvote
+ Given I am a logged in user
  When I follow "Today"
  And I see "upvoted" for "Free Food"
  And I follow "downvote" for "Free Food"
@@ -53,9 +59,10 @@ Scenario: switch from upvote to downvote
  And I should see "downvoted" for "Free Food"
 
 Scenario: switch from downvote to upvote
+  Given I am a logged in user
   When I follow "Today"
- And I see "downvoted" for "Free Food"
- And I follow "upvote" for "Free Food"
- Then I should see "Free Food has been upvoted"
+  And I see "downvoted" for "Free Food"
+  And I follow "upvote" for "Free Food"
+  Then I should see "Free Food has been upvoted"
   And I should see "downvote" for "Free Food"
   And I should see "upvoted" for "Free Food"
