@@ -26,4 +26,15 @@ Given /the following events exist/ do |events_table|
     end
 end
 
+
+Given /I am a logged in user/i do
+    email = "test@test.com"
+    password = "somepassword123"
+    User.new(:email => email, :password => password).save!    
+    visit '/users/sign_in'
+    fill_in "user_email", :with => email
+    fill_in "user_password", :with => password
+    click_button "Sign in"
+end
+
 #TODO When I follow link for event

@@ -1,32 +1,28 @@
 Feature: Leave Rating for Events
+
     As a student
     So that event hosts have a sense of how I felt about their event
     I want to be able to rate events with an upvote or downvote
 
 Background: Events exist with downvotes and upvotes
   
-  Given the following users exist:
-    | username | password| tags |
-    | user     | password| sports | 
-
   And the following events exist:
     | title     |location   | start       | finish         | tags   | guid |
     | Free Food | Andy Kerr | TODAYS_DATE | TOMORROWS_DATE | sports | test1 |
 
 
-  And I am logged in as "user" with password "password"
-  And I am on the home page
-
 
 #TODO: Figure out how to 
 Scenario: upvote an event
+ Given I am a logged in user
  When I follow "Today"
  And I follow "upvote" for "Free Food"
  Then I should see "Free Food"
- And I should see "Free Food has been upvoted"
+ And I should see "upvoted"
 
 
 Scenario: downvote an event
+ Given I am a logged in user
  When I follow "Today"
  And I follow "downvote" for "Free Food"
  Then I should see "Free Food"
