@@ -9,18 +9,16 @@ ColgateCalendar::Application.routes.draw do
   match '/user/:id/settings' => 'users#settings'
   match '/user/:id/update_tags' => 'users#update_tags'
   
-#resources :eventlists
-#root :to => redirect('/home')
   match '/show_event_list' => 'eventlists#show_event_list'
   match '/events/today' => 'events#events_today', :as => 'events_today'
   match '/events/tomorrow' => 'events#events_tomorrow', :as => 'events_tomorrow'
   match '/events/week' => 'events#events_this_week', :as => 'events_this_week'
   match '/events/past' => 'events#events_past', :as => 'events_past'
-  match '/events/upvote' => 'events#upvote_on_event', :as => 'event_upvote' 
-  match '/events/:id/downvote' => 'events#downvote_on_event', :as => 'event_downvote' 
+  match '/events/:id/upvote' => 'events#upvote_event', :as => 'event_upvote' 
+  match '/events/:id/downvote' => 'events#downvote_event', :as => 'event_downvote' 
+  match '/events/:id/unvote' => 'events#unvote_event', :as => 'event_unvote' 
 
   
-#TODO: Do we need the :as for the above 3?
   resources :events
   match '/fetch_and_save_events' => 'events#fetch_and_save_events'
 

@@ -28,11 +28,11 @@
      - if session[:logged_in] then
       %td
        - if vote == true then
-        = "upvoted"
+        = link_to "upvoted", event_unvote_path(:id => event.id)
        - else
         = link_to "upvote", event_upvote_path(:id => event.id)
        - if vote == false then
-        = "downvoted"
+        = link_to "downvoted", event_unvote_path(:id => event.id)
        - else
         = link_to "downvote", event_downvote_path(:id => event.id)
 
