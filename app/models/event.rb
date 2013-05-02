@@ -40,21 +40,7 @@ class Event < ActiveRecord::Base
             @condition_array += (tags.map { |s| '%' + s.downcase + '%' })
         end
     end
-    #due to the way paginate works with lazy loading and dynamic query formation,
-    #this has to be one single statement.
-    results = Event.all(:conditions => @condition_array, :order => order).map { 
-        |event| 
-            vote = nil
-            vote_object = event.votes.where(:voter_id => session[:id]).first
-            if vote_object != nil
-                vote = vote_object.vote
-            end
-            if session[:admin] == true
-                [event, vote, event.votes_for, event.votes_against]
-            else
-                [event, vote]
-            end
-    }.paginate(:per_page => size, :page => page)
+    Event.paginate(:per_page => size, :page => page, :conditions => @condition_array, :order => order, :include => [:votes])
 
   end
 

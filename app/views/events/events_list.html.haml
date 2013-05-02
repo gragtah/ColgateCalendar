@@ -15,26 +15,28 @@
     %th Location
     %th Start
     %th Finish
-    - if session[:logged_in] then
+    - if session[:logged_in] and @when == "Past Events" then
      %th Vote
   %tbody
-   - @events.each do |event_vote_tuple|
-    - event, vote = event_vote_tuple.first, event_vote_tuple.second
+   - @events.each do |event|
+    - vote_object = event.votes.find_by_voter_id(session[:id])
+    - vote = vote_object != nil ? vote_object.vote : nil 
     %tr
      %td= link_to "#{event.title}", event_path(event)
      %td= link_to "#{event.location}", event_path(event)
      %td= link_to "#{event.start.nice_format}", event_path(event)
      %td= link_to "#{event.finish.nice_format}", event_path(event)
-     - if session[:logged_in] then
-      %td
-       - if vote == true then
-        = link_to "upvoted", event_unvote_path(:id => event.id)
-       - else
-        = link_to "upvote", event_upvote_path(:id => event.id)
-       = event_vote_tuple.third
-       - if vote == false then
-        = link_to "downvoted", event_unvote_path(:id => event.id)
-       - else
-        = link_to "downvote", event_downvote_path(:id => event.id)
-       = event_vote_tuple.fourth
+     - if @when == "Past Events" then
+      - if session[:logged_in] then
+       %td
+        - if vote == true then
+         = link_to "upvoted", event_unvote_path(:id => event.id)
+        - else
+         = link_to "upvote", event_upvote_path(:id => event.id)
+        = event.votes_for
+        - if vote == false then
+         = link_to "downvoted", event_unvote_path(:id => event.id)
+        - else
+         = link_to "downvote", event_downvote_path(:id => event.id)
+        = event.votes_against
 
