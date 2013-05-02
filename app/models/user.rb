@@ -17,14 +17,14 @@ class User < ActiveRecord::Base
         user
     end
 
-    def correct_password?(pwd)
-        self.password == pwd
-    end
+#    def correct_password?(pwd)
+#       self.password == pwd
+#   end
     
-    def self.verify_credentials?(username, password)
-        user = User.find_by_username(username)
-        !user.nil? and user.correct_password?(password)
-    end
+#   def self.verify_credentials?(username, password)
+#       user = User.find_by_username(username)
+#       !user.nil? and user.correct_password?(password)
+#   end
 
    def update_tags(tags_list)
         chosen_tags = []

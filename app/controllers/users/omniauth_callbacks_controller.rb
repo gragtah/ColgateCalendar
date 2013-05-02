@@ -8,6 +8,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             session[:logged_in] = true
             session[:username] = @user.username
             session[:id] = @user.id
+            session[:admin] = @user.admin
             sign_in_and_redirect @user, :event => :authentication
         else
              session["devise.google_data"] = request.env["omniauth.auth"]

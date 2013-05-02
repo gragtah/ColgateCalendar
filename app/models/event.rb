@@ -49,7 +49,11 @@ class Event < ActiveRecord::Base
             if vote_object != nil
                 vote = vote_object.vote
             end
-            [event, vote]
+            if session[:admin] == true
+                [event, vote, event.votes_for, event.votes_against]
+            else
+                [event, vote]
+            end
     }.paginate(:per_page => size, :page => page)
 
   end
