@@ -18,8 +18,9 @@ Given the following users exist:
 #TODO: Figure out how to 
 Scenario: upvote an event
  Given I am a logged in user
- When I follow "Today"
- And I follow "upvote" for "Free Food"
+When I am on the events page for today with page number 1 and size 1
+ Then I should see "Free Food"
+ When I follow "upvote"
  Then I should see "Free Food"
  And I should see "upvoted"
 

@@ -15,6 +15,20 @@ Given /^I am logged in as "(.+)" with password "(.+)"$/ do |username, password|
     step %{I should see "Logged in as user"}
 end
 
+Given /I am a logged in user/i do
+    session[:logged_in] = true
+    session[:id] = 1
+    session[:admin] = false
+    session[:username] = "user"
+#    email = "test@test.com"
+#   password = "somepassword123"
+#   User.new(:email => email, :password => password).save!    
+#   visit '/users/sign_in'
+#   fill_in "user_email", :with => email
+#   fill_in "user_password", :with => password
+#   click_button "Sign in"
+end
+
 Given /^username "(.+)" has set the following tags: (.*)$/ do |username, tag_list|
     user = User.find_by_username(username)
     user.tags = tag_list.gsub(' ', '') 
