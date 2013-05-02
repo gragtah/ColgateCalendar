@@ -31,8 +31,7 @@ class Event < ActiveRecord::Base
   
   def self.get_events_after_filtering_by_tags(session, page, size, order = "")
     if session[:logged_in] == true 
-        @username = session[:username]
-        tags = User.find_by_username(@username).tags.downcase.split(',')
+        tags = User.find(session[:id]).tags.downcase.split(',')
 
         #Following code adds tag filtering to our SQL query, and the placeholders for the tags' values
         if tags.length > 0
@@ -40,7 +39,7 @@ class Event < ActiveRecord::Base
             @condition_array += (tags.map { |s| '%' + s.downcase + '%' })
         end
     end
-    Event.paginate(:per_page => size, :page => page, :conditions => @condition_array, :order => order, :include => [:votes])
+    Event.paginate(:per_page => size, :page => page, :conditions => @condition_array, :order => order, :include => :votes)
 
   end
 

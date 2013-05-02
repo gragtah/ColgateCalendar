@@ -33,10 +33,12 @@
          = link_to "upvoted", event_unvote_path(:id => event.id)
         - else
          = link_to "upvote", event_upvote_path(:id => event.id)
-        = event.votes_for
+        - if session[:admin] == true
+         = event.votes_for
         - if vote == false then
          = link_to "downvoted", event_unvote_path(:id => event.id)
         - else
          = link_to "downvote", event_downvote_path(:id => event.id)
-        = event.votes_against
+        - if session[:admin] == true
+         = event.votes_against
 
