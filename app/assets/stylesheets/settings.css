@@ -7,7 +7,7 @@
 
 @media all and (max-device-width: 720px) {
 	li:nth-of-type(odd) {
-		width: 30em;
+		width: 40em;
 	}
 }
 
