@@ -1,0 +1,25 @@
+@media all {
+	div.left {
+		width: 5.1em;
+	}
+}
+
+@media all and (max-device-width: 720px) {
+	div.left {
+		width: 10em;
+	}
+}
+
+ul#info > li {
+	border-bottom: 1px solid #862633;
+	padding: 0.3em 0.1em;
+}
+
+div.left {
+	color: #666;
+	float: left;
+}
+
+span.gray {
+	color: #666;
+}
