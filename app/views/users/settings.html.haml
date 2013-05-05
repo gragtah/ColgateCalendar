@@ -1,15 +1,22 @@
+%head
+ = stylesheet_link_tag 'settings.css'
+
 %section#header
  %h1 Settings
  %div= flash[:notice]
 
 %section#content
  %h3= link_to 'Home', '/'
- = form_tag "/user/#{session[:id]}/update_tags", :method => :post do 
+ = form_tag "/user/#{session[:id]}/update_tags", :method => :post do
   %ul.no-bullets
    %div Choose your tags for event filtering:
+   - even = false
    - @all_tags.each do |tag| 
     %li
      = check_box_tag "tags[#{tag}]", 1, @selected_tags.include?(tag), :id => "tags_#{tag}"
-     = tag
+     = label "tags", tag
+    - if even == true
+     %div.clear
+    - even = !even
   %div
    = submit_tag 'Save', :id => 'tags_submit'

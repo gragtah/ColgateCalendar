@@ -1,0 +1,8 @@
+li:nth-of-type(odd) {
+	float: left;
+	width: 15em;
+}
+
+div.clear {
+	clear: both;
+}
