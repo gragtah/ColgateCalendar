@@ -1,66 +1,59 @@
-table {
-	border: 0.1em solid #862633;
-	border-radius: 0.2em;
-	padding: 0.2em;
+h3 {
+	font-size: 1.8em;
+	font-weight: bold;
 }
 
-td, th {
-	border-right: 0.1em solid #AD3234;
+li.event {
+	margin-bottom: 2em;
 }
 
-td {
-	padding: 0.2em;
-	text-wrap: none;
+div.title {
+	font-size: 1.6em;
+	font-weight: bold;
 }
 
-td > a {
+div.title > a {
 	color: #000;
 }
 
-td:nth-child(1) {
-	width: 40%;
+div.panel.left {
+	float: left;
+	margin: 0 2em 0 1em;
 }
 
-td:nth-child(2) {
-	width: 20%;
+div.panel.right {
+	background-color: #FDD;
+	margin-top: 0.1em;
+	padding: 0.5em 0;
 }
 
-td:nth-child(3) {
-	width: 15%;
+div.votebox.up {
+	margin-top: 0em;
 }
 
-td:nth-child(4) {
-	width: 15%;
+div.votebox.down {
+	margin-top: -0.2em;
 }
 
-td:nth-child(5), td:nth-child(6), td:nth-child(7) {
-	text-align: center;
-	vertical-align: middle;
+span.label {
+	color: #333;
+	margin-right: 0.5em;
 }
 
-th {
-	font-size: 1.1em;
+span.locale {
+	font-size: 1.2em;
 }
 
-thead > tr {
-	background-color: #B58484;
-	border-bottom: 0.3em solid #AD3234;
+span.vote {
+	font-size: 1.8em;
+	font-weight: bold;
 }
 
-tr {
-	border-bottom: 0.1em solid #AD3234;
+span.vote.yes {
+	color: #862633;
 }
 
-tr:nth-child(even) {
-	background-color: #D38787;
+span.vote.no {
+	color: #999;
 }
 
-tr:nth-child(odd) {
-	background-color: #FFF;
-}
-
-tbody tr a {
-	display: block;
-	height: 100%;
-	width: 100%;
-}
