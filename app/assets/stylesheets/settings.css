@@ -1,6 +1,14 @@
-li:nth-of-type(odd) {
-	float: left;
-	width: 15em;
+@media all {
+	li:nth-of-type(odd) {
+		float: left;
+		width: 15em;
+	}
+}
+
+@media all and (max-device-width: 720px) {
+	li:nth-of-type(odd) {
+		width: 30em;
+	}
 }
 
 div.clear {
