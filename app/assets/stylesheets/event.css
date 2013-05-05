@@ -6,12 +6,13 @@
 
 @media all and (max-device-width: 720px) {
 	div.left {
+		font-size: 2em;
 		width: 10em;
 	}
 }
 
 ul#info > li {
-	border-bottom: 1px solid #862633;
+	border-bottom: 0.1em solid #862633;
 	padding: 0.3em 0.1em;
 }
 
