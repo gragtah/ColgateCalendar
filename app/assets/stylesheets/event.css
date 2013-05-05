@@ -1,24 +1,30 @@
 @media all {
-	div.left {
+	ul#info > li {
+		border-bottom: 0.1em solid #862633;
+	}
+	
+	div.label {
 		width: 5.1em;
 	}
 }
 
 @media all and (max-device-width: 720px) {
-	div.left {
-		font-size: 2.3em;
+	ul#info > li {
+		border-bottom: 0.2em solid #862633;
+	}
+	
+	div.label {
+		font-size: 2.5em;
 		width: 8em;
 	}
 }
 
 ul#info > li {
-	border-bottom: 0.2em solid #862633;
 	padding: 0.3em 0.1em;
 }
 
-div.left {
+div.label {
 	color: #666;
-	float: left;
 }
 
 span.gray {

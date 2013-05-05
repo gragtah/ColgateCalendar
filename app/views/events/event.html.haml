@@ -8,21 +8,21 @@
  %h3= link_to 'Home', '/'
  %ul#info
   %li
-   %div.left Description:
-   %div.right= @event.description
+   %div.label Description
+   %div= @event.description
   %li
-   %div.left Where:
-   %div.right= @event.location
+   %div.label Where
+   %div= @event.location
   %li
-   %div.left When:
-   %div.right
+   %div.label When
+   %div
     %span.gray From
     %span= @event.start.nice_format
     %span.gray to
     %span= @event.finish.nice_format
   %li
-   %div.left Contact:
-   %div.right
+   %div.label Contact
+   %div
     %span= @event.contact_name
     %span.gray at
     %span= @event.contact_phone
