@@ -44,11 +44,15 @@ span.vote {
 	font-weight: bold;
 }
 
-span.vote.yes {
+span.vote.yes > a {
 	color: #862633;
 }
 
-span.vote.no {
-	color: #999;
+span.vote.no > a {
+	color: #666;
+}
+
+span.vote.no > a:hover {
+	color: #862633;
 }
 
