@@ -89,6 +89,8 @@ h2 > a:active {
 }
 
 h3 {
+	font-size: 1.8em;
+	font-weight: bold;
 	margin: 0.5em 0;
 }
 

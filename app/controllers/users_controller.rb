@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     
     def settings
         if session[:logged_in] == true and session[:id].to_i == params[:id].to_i
-            @all_tags = ColgateCalendar::Application.config.tags
+            @all_tags = ColgateCalendar::Application.config.tags.sort
             @selected_tags = User.find(session[:id]).tags.downcase.split(',')
             render 'settings'
         else
