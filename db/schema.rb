@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506213215) do
+ActiveRecord::Schema.define(:version => 20130506220309) do
 
   create_table "eventlists", :force => true do |t|
     t.text     "info"
