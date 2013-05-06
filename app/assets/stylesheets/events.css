@@ -1,3 +1,8 @@
+section#footer {
+    clear: both;
+    text-align: center;
+}
+
 li.event {
 	clear: both;
 	margin-bottom: 2em;

@@ -39,4 +39,5 @@
          %span.vote.no= link_to image_tag("arrow_down.png"), event_downvote_path(:id => event.id)
         - if session[:admin] == true then
          %span.vote_count= "-" + event.votes_against.to_s
-
+%section#footer
+ = will_paginate @events
