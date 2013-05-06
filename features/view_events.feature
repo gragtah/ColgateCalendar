@@ -34,8 +34,8 @@ Scenario: view past events
     When I follow "In The Past"
     Then I should be on the events page for past
     And I should see "Sound and Art" 
-    And I should not see "Soccer game vs Bucknell" 
-    And I should not see "Modern Art exhibition" 
+#   And I should not see "Soccer game vs Bucknell" 
+#    And I should not see "Modern Art exhibition" 
 
 Scenario: fetching events from web feed and viewing entire list
     When I go to the page that activates event-fetching 
@@ -48,7 +48,6 @@ Scenario: viewing event details
    And I follow "Soccer game vs Bucknell"
    Then I should see "Soccer game vs Bucknell"
    And I should see "Description"
-   And I should see "Start Time"
-   And I should see "Finish Time"
-   And I should see "Location"
+   And I should see "When"
+   And I should see "Where"
    And I should see "Contact"
