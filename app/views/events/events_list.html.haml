@@ -30,13 +30,13 @@
          %span.vote.yes= link_to image_tag("arrow_up.png"), event_unvote_path(:id => event.id)
         - else
          %span.vote.no= link_to image_tag("arrow_up.png"), event_upvote_path(:id => event.id)
-        - if session[:admin] == true or true then
+        - if session[:admin] == true then
          %span.vote_count= "+" + event.votes_for.to_s
        %div.votebox.down
         - if vote == false then
          %span.vote.yes= link_to image_tag("arrow_down.png"), event_unvote_path(:id => event.id)
         - else
          %span.vote.no= link_to image_tag("arrow_down.png"), event_downvote_path(:id => event.id)
-        - if session[:admin] == true or true then
+        - if session[:admin] == true then
          %span.vote_count= "-" + event.votes_against.to_s
 
