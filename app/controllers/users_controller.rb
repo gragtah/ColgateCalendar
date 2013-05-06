@@ -4,19 +4,6 @@ class UsersController < ApplicationController
     def login
         redirect_to user_omniauth_authorize_path(:google_oauth2)
     end
-    
-#   def authenticate
-#       username, password = params[:login][:username], params[:login][:password]
-#       if User.verify_credentials?(username, password)
-#               session[:logged_in] = true
-#               session[:username] = username
-#               flash[:info] = "Welcome, #{username}!"
-#               redirect_to "/"
-#       else
-#               flash[:warning] = "Invalid username/password!"
-#               redirect_to "/user/login"
-#       end
-#    end
 
     def logout
        reset_session
@@ -35,7 +22,7 @@ class UsersController < ApplicationController
     end
 
     def update_tags
-        @user = User.find_by_username(session[:username])
+        @user = User.find(session[:id])
         if session[:logged_in] == true and @user.id == params[:id].to_i
             @user.update_tags(params[:tags])
             flash[:notice] = "Settings updated!"

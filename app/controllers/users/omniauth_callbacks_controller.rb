@@ -7,6 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             flash[:notice] = "Logged in successfully as #{@user.username}"
             session[:logged_in] = true
             session[:username] = @user.username
+            session[:email] = @user.email
             session[:id] = @user.id
             session[:admin] = @user.admin
             sign_in_and_redirect @user, :event => :authentication
