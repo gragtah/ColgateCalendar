@@ -15,23 +15,6 @@
    %li.event
     %div.title= link_to event.title, event_path(event)
     %div.panel.left
-     %div.voting
-      - if session[:logged_in] and @when == "Past Events" then
-       %div.votebox.up
-        - if vote == true then
-         %span.vote.yes= link_to raw("&uarr;"), event_unvote_path(:id => event.id)
-        - else
-         %span.vote.no= link_to raw("&uarr;"), event_upvote_path(:id => event.id)
-        - if session[:admin] == true then
-         %span.vote_count= "+" + event.votes_for
-       %div.votebox.down
-        - if vote == false then
-         %span.vote.yes= link_to raw("&darr;"), event_unvote_path(:id => event.id)
-        - else
-         %span.vote.no= link_to raw("&darr;"), event_downvote_path(:id => event.id)
-        - if session[:admin] == true then
-         %span.vote_count= "-" + event.votes_against
-    %div.panel.right
      = link_to event_path(event) do
       %div.locale
        %span.label Where:
@@ -39,4 +22,21 @@
       %div.locale
        %span.label When:
        %span.locale= event.start.nice_format + " to " + event.finish.nice_format
+    %div.panel.right
+     %div.voting
+      - if session[:logged_in] and @when == "Past Events" then
+       %div.votebox.up
+        - if vote == true then
+         %span.vote.yes= link_to image_tag("arrow_up.png"), event_unvote_path(:id => event.id)
+        - else
+         %span.vote.no= link_to image_tag("arrow_up.png"), event_upvote_path(:id => event.id)
+        - if session[:admin] == true or true then
+         %span.vote_count= "+" + event.votes_for.to_s
+       %div.votebox.down
+        - if vote == false then
+         %span.vote.yes= link_to image_tag("arrow_down.png"), event_unvote_path(:id => event.id)
+        - else
+         %span.vote.no= link_to image_tag("arrow_down.png"), event_downvote_path(:id => event.id)
+        - if session[:admin] == true or true then
+         %span.vote_count= "-" + event.votes_against.to_s
 

@@ -1,4 +1,5 @@
 li.event {
+	clear: both;
 	margin-bottom: 2em;
 }
 
@@ -12,14 +13,16 @@ div.title > a {
 }
 
 div.panel.left {
+	border-radius: 0.5em;
+	background-color: #FDD;
 	float: left;
-	margin: 0 2em 0 1em;
+	margin-top: 0.1em;
+	padding: 0.5em;
 }
 
 div.panel.right {
-	background-color: #FDD;
-	margin-top: 0.1em;
-	padding: 0.5em 0;
+	float: left;
+	margin-left: 1em;
 }
 
 div.votebox.up {
@@ -44,15 +47,20 @@ span.vote {
 	font-weight: bold;
 }
 
-span.vote.yes > a {
-	color: #862633;
+span.vote img {
+	height: 1em;
+	width: 1em;
 }
 
-span.vote.no > a {
-	color: #666;
+span.vote.yes img {
+	opacity: 1.0;
 }
 
-span.vote.no > a:hover {
-	color: #862633;
+span.vote.no img {
+	opacity: 0.5;
+}
+
+span.vote.no img:hover {
+	opacity: 1.0;
 }
 
