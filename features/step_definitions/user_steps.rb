@@ -6,14 +6,14 @@ Given /the following users exist/ do |users_table|
     end
 end
 
-Given /^I am logged in as "(.+)" with password "(.+)"$/ do |username, password|
-    step %{I am on the login page}
-    step %{I fill in "Username" with "#{username}"}
-    step %{I fill in "Password" with "#{password}"}
-    step %{I press "Login"}
-    step %{I should be on the home page}
-    step %{I should see "Logged in as user"}
-end
+#Given /^I am logged in as "(.+)" with password "(.+)"$/ do |username, password|
+#   step %{I am on the login page}
+#   step %{I fill in "Username" with "#{username}"}
+#   step %{I fill in "Password" with "#{password}"}
+#   step %{I press "Login"}
+#   step %{I should be on the home page}
+#    step %{I should see "Logged in as user"}
+#end
 
 Given /I am a logged in user/i do
    email = "test@test.com"
