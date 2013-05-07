@@ -24,7 +24,7 @@
        %span.locale= event.start.nice_format + " to " + event.finish.nice_format
     %div.panel.right
      %div.voting
-      - if session[:logged_in] and @when == "Past Events" then
+      - if (session[:logged_in] or $logged_in) and @when == "Past Events" then
        %div.votebox.up
         - if vote == true then
          %span.vote.yes.upvoted= link_to image_tag("arrow_up.png", class: "upimage"), event_unvote_path(:id => event.id)

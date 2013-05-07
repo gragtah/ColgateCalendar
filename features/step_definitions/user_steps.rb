@@ -23,6 +23,7 @@ Given /I am a logged in user/i do
    fill_in "user_email", :with => email
    fill_in "user_password", :with => password
    click_button "Sign in"
+   $logged_in = true
 end
 
 Given /^username with email "(.+)" has set the following tags: (.*)$/ do |email, tag_list|

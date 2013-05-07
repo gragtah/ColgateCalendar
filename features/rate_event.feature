@@ -18,9 +18,10 @@ Given the following users exist:
 #TODO: Figure out how to 
 Scenario: upvote an event
  Given I am a logged in user
- When I am on the events page for today with page number 1 and size 1
+ When I am on the events page for past with page number 1 and size 1
  Then I should see "Free Food"
- And I find "upimage"
+ Then show me the page
+ And I find ".upimage"
  Then I should see "Free Food"
  Then I should see css "span.upvoted"
 
