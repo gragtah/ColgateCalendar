@@ -24,19 +24,19 @@
        %span.locale= event.start.nice_format + " to " + event.finish.nice_format
     %div.panel.right
      %div.voting
-      - if session[:logged_in] and @when == "Past Events" then
+      - if (session[:logged_in] or $logged_in) and @when == "Past Events" then
        %div.votebox.up
         - if vote == true then
-         %span.vote.yes= link_to image_tag("arrow_up.png"), event_unvote_path(:id => event.id)
+         %span.vote.yes.upvoted= link_to image_tag("arrow_up.png", class: "upimage"), event_unvote_path(:id => event.id)
         - else
-         %span.vote.no= link_to image_tag("arrow_up.png"), event_upvote_path(:id => event.id)
+         %span.vote.no.upvote= link_to image_tag("arrow_up.png", class: "upimage"), event_upvote_path(:id => event.id)
         - if session[:admin] == true then
          %span.vote_count= "+" + event.votes_for.to_s
        %div.votebox.down
         - if vote == false then
-         %span.vote.yes= link_to image_tag("arrow_down.png"), event_unvote_path(:id => event.id)
+         %span.vote.yes.downvoted= link_to image_tag("arrow_down.png", class: "downimage"), event_unvote_path(:id => event.id)
         - else
-         %span.vote.no= link_to image_tag("arrow_down.png"), event_downvote_path(:id => event.id)
+         %span.vote.no.downvote= link_to image_tag("arrow_down.png", class: "downimage"), event_downvote_path(:id => event.id)
         - if session[:admin] == true then
          %span.vote_count= "-" + event.votes_against.to_s
 %section#footer

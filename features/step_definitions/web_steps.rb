@@ -252,3 +252,16 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+Then /^I should (not )?see an element "([^"]*)"$/ do |negate, selector|
+  expectation = negate ? :should_not : :should
+  page.send(expectation, have_css(selector))
+end
+
+Then /^I should see css "(.+)"/ do |element|
+	page.should have_css(element)
+end
+
+Then /^I find "(.+)"/ do |image|
+  first(image).click
+end

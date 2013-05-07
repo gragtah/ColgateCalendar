@@ -18,52 +18,55 @@ Given the following users exist:
 #TODO: Figure out how to 
 Scenario: upvote an event
  Given I am a logged in user
-When I am on the events page for today with page number 1 and size 1
+ When I am on the events page for past with page number 1 and size 1
  Then I should see "Free Food"
- When I follow "upvote"
+ Then show me the page
+ And I find ".upimage"
  Then I should see "Free Food"
- And I should see "upvoted"
-
+ Then I should see css "span.upvoted"
 
 Scenario: downvote an event
  Given I am a logged in user
- When I follow "Today"
- And I follow "downvote" for "Free Food"
+ When I am on the events page for today with page number 1 and size 1
  Then I should see "Free Food"
- And I should see "Free Food has been downvoted"
-
+ And I find "downimage"
+ Then I should see "Free Food"
+ And I should see css "span.downvoted"
 
 Scenario: un-upvote an event
  Given I am a logged in user
- When I follow "Today"
- And I see "upvoted" for "Free Food"
- And I follow "upvoted" for "Free Food"
- Then I should see "upvote" for "Free Food"
- And I should see "downvote" for "Free Food"
+ When I am on the events page for today with page number 1 and size 1
+ Then I should see "Free Food"
+ And I should see css "span.upvoted"
+ And I find "upimage"
+ Then I should see "Free Food"
+ Then I should see css "span.upvote"
+
 
 Scenario: un-downvote an event
  Given I am a logged in user
- When I follow "Today"
- And I see "downvoted" for "Free Food"
- And I follow "downvoted" for "Free Food"
- Then I should see "downvote" for "Free Food"
- And I should see "upvote" for "Free Food"
+ When I am on the events page for today with page number 1 and size 1
+ Then I should see "Free Food"
+ And I should see css "span.downvoted"
+ And I find "downimage"
+ Then I should see "Free Food"
+ Then I should see css "span.downvote"
 
 
 Scenario: switch from upvote to downvote
  Given I am a logged in user
- When I follow "Today"
- And I see "upvoted" for "Free Food"
- And I follow "downvote" for "Free Food"
- Then I should see "Free Food has been downvoted"
- And I should see "upvote" for "Free Food"
- And I should see "downvoted" for "Free Food"
+ When I am on the events page for today with page number 1 and size 1
+ Then I should see "Free Food"
+ And I should see css "span.upvoted"
+ And I find "downimage"
+ Then I should see "Free Food"
+ Then I should see css "span.downvoted"
 
 Scenario: switch from downvote to upvote
-  Given I am a logged in user
-  When I follow "Today"
-  And I see "downvoted" for "Free Food"
-  And I follow "upvote" for "Free Food"
-  Then I should see "Free Food has been upvoted"
-  And I should see "downvote" for "Free Food"
-  And I should see "upvoted" for "Free Food"
+ Given I am a logged in user
+ When I am on the events page for today with page number 1 and size 1
+ Then I should see "Free Food"
+ And I should see css "span.downvoted"
+ And I find "upimage"
+ Then I should see "Free Food"
+ Then I should see css "span.upvoted"
