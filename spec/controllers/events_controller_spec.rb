@@ -72,29 +72,31 @@ describe EventsController do
 
 	describe "ratings functionality" do
 		it "should allow users to leave upvotes" do
-			fake_event = mock(Event, :guid => 2)
+			fake_event = mock(Event, :id => 2)
 			session[:logged_in] = true
 			session[:username] = "user"
-			fake_user = mock(User, :username => "user")
-			#First time, user should be able to leave feedback.
-			fake_event.should_receive(:upvote).with("user").and_return(true)
-			#Update event feedback.
+                        session[:id] = 1
+                        session[:return_to] = "/events/past"
+			fake_user = mock(User, :username => "user", :id => 1)
+                        User.stub!(:find).with(1).and_return(fake_user)
+                        Event.stub!(:find).with(2).and_return(fake_event)
+                        fake_user.stub!(:upvote).and_return(true)
+			fake_user.should_receive(:upvote) #.with(fake_event) #"user").and_return(true)
 			#However, a repeat vote shouldn't be allowed
-			fake_event.should_receive(:upvote).with("user").and_return(false)
+#                       fake_event.should_receive(:upvote).with("user").and_return(false)
+                        get :upvote_event, {:id => 2}
 		end
-                    #TODO:if user has upvoted, they should be able to downvote instead, and vice versa
-                    # also they should be able to click on their voted choice to unvote too. :unvote method
 		
 		it "should allow users to leave downvotes" do
-			fake_event = mock(Event, :guid => 2)
+			fake_event = mock(Event, :id => 3)
 			session[:logged_in] = true
 			session[:username] = "user"
-			fake_user = mock(User, :username => "user")
-			#First time, user should be able to leave feedback.
-			fake_event.should_receive(:downvote).with("user").and_return(true)
-			#Update event feedback.
-			#However, a repeat vote shouldn't be allowed
-			fake_event.should_receive(:downvote).with("user").and_return(false)
+                        session[:id] = 1
+                        session[:return_to] = "/events/past"
+			fake_user = mock(User, :username => "user", :id => 1)
+                        User.stub!(:find).with(1).and_return(fake_user)
+			fake_user.should_receive(:downvote).with(3)
+                        get :downvote_event, {:id => 3}
 		end
 
                 it "should allow certain pre-determined users to view event ratings" do

@@ -28,6 +28,10 @@ Given /I am a logged in user/i do
    page.set_rack_session(:id => 1, :email => "test@test.com", :logged_in => true)
 end
 
+Given /I am a logged out user/i do
+   page.set_rack_session(:id => 1, :email => "test@test.com", :logged_in => false)
+end
+
 Given /^username with email "(.+)" has set the following tags: (.*)$/ do |email, tag_list|
     user = User.find_by_email(email)
     user.tags = tag_list.gsub(' ', '') 

@@ -33,3 +33,13 @@ Scenario: edit my keywords from settings
     And I press "Save"
     Then I should be on the settings page for user with id 1
     And I should see "Settings updated"
+
+Scenario: Can't edit keywords if not logged in
+    Given I am a logged out user
+    And I visit /user/1/update_tags 
+    Then I should be on the signup page
+
+Scenario: Can't view settings unless logged in
+    Given I am a logged out user
+    And I visit /user/1/settings
+    Then I should be on the home page
