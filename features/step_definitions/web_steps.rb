@@ -252,3 +252,20 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+Then /^I should (not )?see an element "([^"]*)"$/ do |negate, selector|
+  expectation = negate ? :should_not : :should
+  page.send(expectation, have_css(selector))
+end
+
+Then /^"([^\"]*)" should have class "([^\"]*)"$/ do |id, parent_class|
+  assert page.has_xpath?('//a[@id="'+id+'"]/..[@class="'+parent_class+'"]')
+end
+
+Then I should see css /^"([^\"]*)"/ do |element|
+	page.should have_css(element)
+end
+
+Then I find /^"([^\"]*)"/ do |image|
+  find(image).click
+end
