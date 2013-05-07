@@ -31,23 +31,16 @@ describe UsersController, :type => :controller do
 		end
 	end
         
-        describe "correct_password? should return true/false depending on input" do
-            it "should call the correct_password? function" do
-                dummy = User.new
-                dummy.username = "user"
-                dummy.password = "password"
-                dummy.correct_password?("password").should == true
-            end
-        end
-        
         describe "logout testing" do
         	it "should log the user out" do
+                        session[:logged_in] = true
+                        session[:username] = "user"
+                        session[:id] = 1
+                        session[:admin] = true
 			fake_user = mock(User, :username => "user", :password => "password") 
       			User.stub!(:find_by_username).with("user").and_return(fake_user)
                         fake_user.stub!(:correct_password?).with("password").and_return(true)
-
-			User.verify_credentials?("user", "password").should == true
-			post :logout, :login => {:username =>"user", :password => "password"} 
+			post :logout
 			response.should redirect_to("/")
 			session[:username].should == nil
 			session[:logged_in].should == nil
@@ -64,18 +57,21 @@ describe UsersController, :type => :controller do
 
         describe "user settings" do
             it "should allow logged-in user to see the settings page" do
-                session[:username] = "user"
                 session[:logged_in] = true
-		fake_user = mock(User, :id => 1, :username => "user", :password => "password") 
-      		User.stub!(:find_by_username).with("user").and_return(fake_user)
+                session[:username] = "user"
+                session[:id] = 1
+		fake_user = mock(User, :id => 1, :username => "user", :password => "password", :tags => "") 
+      		User.stub!(:find).with(1).and_return(fake_user)
+                fake_user.should_receive(:tags)
 	        get :settings, {:id => 1}
 		response.should render_template(:settings)
             end
             it "should allow logged-in user to update tags/keywords" do
-                session[:username] = "user"
                 session[:logged_in] = true
+                session[:username] = "user"
+                session[:id] = 1
 		fake_user = mock(User, :id => 1, :username => "user", :password => "password") 
-      		User.stub!(:find_by_username).with("user").and_return(fake_user)
+      		User.stub!(:find).with(1).and_return(fake_user)
                 fake_user.stub!(:update_tags).with(anything)
                 put :update_tags, {:id => 1, :tags => "arts,athletics,faculty"}
 		response.should redirect_to "/user/1/settings"
