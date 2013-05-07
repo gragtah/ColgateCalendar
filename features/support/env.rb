@@ -60,3 +60,9 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+Capybara.default_host = "http://example.org"
+ 
+OmniAuth.config.test_mode = true
+OmniAuth.config.add_mock(:google_oauth2, { 
+   :uid => "1234567"
+})
