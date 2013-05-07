@@ -17,6 +17,8 @@ unique to each student and can be changed at any time to reflect their preferenc
 film screenings etc. The stakeholders for ColgateCalendar are Fouad Saleet (our client), Saleet's Elites (Gaurav, Slava, 
 Zach, Jack and Andrew), and Colgate students, faculty and professors.
 
+CURRENT HEROKU APP URL:
+http://secure-shore-2211.herokuapp.com/
 
 NB:
 - call the fetch and save events route to update stored events
