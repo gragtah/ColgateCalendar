@@ -1,14 +1,24 @@
-#Feature: Basic Login Functionality
+Feature: Basic Login Functionality
 
-#Scenario: Logged in user
-#  Given I am on the home page
+    As a user
+    So that I can have this app display content customized to my preferences
+    I want to login using my Colgate credentials
+
+Scenario: Logging in
+    Given I am on the home page
+    When I follow "Login"
+    Then I should be on the signup page
+
+Scenario: Logging out
 #  Then I should be signed in with Google
+    Given I am a logged in user
+    And I am on the home page
+    And I follow "Logout"
+    Then I should see "logged out"
+    And I should not see "Settings"
 
 
 
-#    As a user
-#    So that I can have this app display content customized to my preferences
-#    I want to login using my Colgate credentials
 #
 #    For this feature, in this iteration, we will just implement a simple user with username: "user" #and password "password" so that hereon we work with non-logged-in and logged-in users very clearly.
 #

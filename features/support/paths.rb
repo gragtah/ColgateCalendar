@@ -19,7 +19,9 @@ module NavigationHelpers
      when /^the page that activates event-fetching$/ then '/fetch_and_save_events'
      when /^the events listing page$/ then "/events"
      when /^the login page$/ then '/user/login'
+     when /^the signup page$/ then '/users/sign_up'
      when /^the settings page for user with id (.*)$/ then "/user/#{$1}/settings"
+     
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
