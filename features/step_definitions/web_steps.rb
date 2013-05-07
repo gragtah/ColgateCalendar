@@ -265,3 +265,8 @@ end
 Then /^I find "(.+)"/ do |image|
   first(image).click
 end
+
+When /^(?:|I )visit (.+)$/ do |page_url|
+   page.set_rack_session(:return_to => page_url)
+  visit page_url
+end

@@ -116,21 +116,21 @@ class EventsController < ApplicationController
   end
 
  def upvote_event
-     session[:return_to] = request.referer
+     session[:return_to] ||= request.referer
      user = User.find(session[:id])
      user.upvote(params[:id].to_i)
      redirect_to session.delete(:return_to)
   end
 
  def downvote_event
-     session[:return_to] = request.referer
+     session[:return_to] ||= request.referer
      user = User.find(session[:id])
      user.downvote(params[:id].to_i)
      redirect_to session.delete(:return_to)
   end
  
   def unvote_event
-     session[:return_to] = request.referer
+     session[:return_to] ||= request.referer
      user = User.find(session[:id])
      user.unvote(params[:id].to_i)
      redirect_to session.delete(:return_to)

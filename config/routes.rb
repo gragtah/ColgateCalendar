@@ -2,6 +2,7 @@ ColgateCalendar::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   match '/' => 'home#home'
+  match '/auth/google_oauth2' => 'home#home'
   
   match '/user/login' => 'users#login'
   match '/user/logout' => 'users#logout'
@@ -17,6 +18,7 @@ ColgateCalendar::Application.routes.draw do
   match '/events/:id/upvote' => 'events#upvote_event', :as => 'event_upvote' 
   match '/events/:id/downvote' => 'events#downvote_event', :as => 'event_downvote' 
   match '/events/:id/unvote' => 'events#unvote_event', :as => 'event_unvote' 
+
 
   
   resources :events

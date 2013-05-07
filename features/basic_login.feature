@@ -1,5 +1,11 @@
 #Feature: Basic Login Functionality
-#
+
+#Scenario: Logged in user
+#  Given I am on the home page
+#  Then I should be signed in with Google
+
+
+
 #    As a user
 #    So that I can have this app display content customized to my preferences
 #    I want to login using my Colgate credentials

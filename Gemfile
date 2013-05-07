@@ -13,6 +13,7 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'simplecov'
+  gem 'rack_session_access'
 end
 
 group :test do

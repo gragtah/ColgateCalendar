@@ -11,62 +11,38 @@ Given the following users exist:
  
  And the following events exist:
     | title     |location   | start       | finish         | tags   | guid  | id |
-    | Free Food | Andy Kerr | TODAYS_DATE | TOMORROWS_DATE | sports | test1 | 1  |
+    | Free Food | Andy Kerr | YESTERDAYS_DATE | YESTERDAYS_DATE | sports | test1 | 1  |
 
 
-
-#TODO: Figure out how to 
 Scenario: upvote an event
  Given I am a logged in user
  When I am on the events page for past with page number 1 and size 1
+ And I have not voted for event with id 1
  Then I should see "Free Food"
- Then show me the page
- And I find ".upimage"
+ When I upvote event with id 1
  Then I should see "Free Food"
  Then I should see css "span.upvoted"
 
 Scenario: downvote an event
  Given I am a logged in user
- When I am on the events page for today with page number 1 and size 1
+ When I am on the events page for past with page number 1 and size 1
+ And I have not voted for event with id 1
  Then I should see "Free Food"
- And I find "downimage"
- Then I should see "Free Food"
- And I should see css "span.downvoted"
-
-Scenario: un-upvote an event
- Given I am a logged in user
- When I am on the events page for today with page number 1 and size 1
- Then I should see "Free Food"
- And I should see css "span.upvoted"
- And I find "upimage"
- Then I should see "Free Food"
- Then I should see css "span.upvote"
-
-
-Scenario: un-downvote an event
- Given I am a logged in user
- When I am on the events page for today with page number 1 and size 1
+ When I downvote event with id 1
  Then I should see "Free Food"
  And I should see css "span.downvoted"
- And I find "downimage"
- Then I should see "Free Food"
- Then I should see css "span.downvote"
 
-
-Scenario: switch from upvote to downvote
+Scenario: switch from upvote to downvote and back
  Given I am a logged in user
- When I am on the events page for today with page number 1 and size 1
+ When I am on the events page for past with page number 1 and size 1
+ And I have not voted for event with id 1
+ And I upvote event with id 1
  Then I should see "Free Food"
  And I should see css "span.upvoted"
- And I find "downimage"
+ When I downvote event with id 1
  Then I should see "Free Food"
  Then I should see css "span.downvoted"
+ When I upvote event with id 1
+ Then I should see "Free Food"
+ And I should see css "span.upvoted"
 
-Scenario: switch from downvote to upvote
- Given I am a logged in user
- When I am on the events page for today with page number 1 and size 1
- Then I should see "Free Food"
- And I should see css "span.downvoted"
- And I find "upimage"
- Then I should see "Free Food"
- Then I should see css "span.upvoted"

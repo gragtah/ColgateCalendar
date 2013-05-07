@@ -64,5 +64,5 @@ Capybara.default_host = "http://example.org"
  
 OmniAuth.config.test_mode = true
 OmniAuth.config.add_mock(:google_oauth2, { 
-   :uid => "1234567"
+   :uid => "12345"
 })
